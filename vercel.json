@@ -1,4 +1,4 @@
-﻿{
+{
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
@@ -9,7 +9,7 @@
     },
     {
       "source": "/thank-you/(.*)",
-      "destination": "https://thankyoupage-nu.vercel.app/$1"
+      "destination": "https://thankyoupage-nu.vercel.app/"
     },
     {
       "source": "/(.*)",
