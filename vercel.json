@@ -4,26 +4,6 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/thank-you",
-      "destination": "https://thankyoupage-nu.vercel.app"
-    },
-    {
-      "source": "/thank-you/(.*)",
-      "destination": "https://thankyoupage-nu.vercel.app/"
-    },
-    {
-      "source": "/assets/index-BQBY3SD7.js",
-      "destination": "https://thankyoupage-nu.vercel.app/assets/index-BQBY3SD7.js"
-    },
-    {
-      "source": "/assets/index-BIb36Rc5.css",
-      "destination": "https://thankyoupage-nu.vercel.app/assets/index-BIb36Rc5.css"
-    },
-    {
-      "source": "/assets/317aac7b745698be-vervescale_logo_cutout-CMs2JMmh.png",
-      "destination": "https://thankyoupage-nu.vercel.app/assets/317aac7b745698be-vervescale_logo_cutout-CMs2JMmh.png"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
