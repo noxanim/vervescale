@@ -20,8 +20,8 @@
       "destination": "https://thankyoupage-nu.vercel.app/assets/index-BIb36Rc5.css"
     },
     {
-      "source": "/assets/317aac7b745698be-(.*)",
-      "destination": "https://thankyoupage-nu.vercel.app/assets/317aac7b745698be-"
+      "source": "/assets/317aac7b745698be-vervescale_logo_cutout-CMs2JMmh.png",
+      "destination": "https://thankyoupage-nu.vercel.app/assets/317aac7b745698be-vervescale_logo_cutout-CMs2JMmh.png"
     },
     {
       "source": "/(.*)",
