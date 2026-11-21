@@ -156,7 +156,7 @@ const heroPhrases = ["Selling.", "get Leads", "get Sales", "get Calls", "get Boo
 
 function HeroTypewriter() {
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [text, setText] = useState("");
+  const [text, setText] = useState("Selling.");
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {

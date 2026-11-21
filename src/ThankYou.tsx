@@ -1,4 +1,4 @@
-import logoUrl from "./assets/thank_you_logo.png";
+import logoUrl from "./assets/thank_you_logo.webp";
 
 const whatsappMessage =
   "Hi VerveScale Digital! I just completed my payment.\nQ: What is your name?\nA:\nQ: Which plan did you pay for?\nA:\nQ: What is your business / what are you selling?\nA:\nQ: What is your WhatsApp number?\nA:\nQ: What is your email?\nA:\nPlease confirm my payment. Thank you!";

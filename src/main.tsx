@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import ThankYou from "./ThankYou";
 import "./index.css";
+
+const ThankYou = lazy(() => import("./ThankYou"));
 
 function Root() {
   const [path, setPath] = React.useState(window.location.pathname);
@@ -15,7 +16,11 @@ function Root() {
 
   const normalized = path.toLowerCase().replace(/\/+$/, "");
   if (normalized === "/thank-you" || normalized.startsWith("/thank-you/")) {
-    return <ThankYou />;
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#050E1A]" />}>
+        <ThankYou />
+      </Suspense>
+    );
   }
   return <App />;
 }
