@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --navy:#050E1A;
+  --navy-2:#071A2E;
+  --navy-3:#0A2340;
+  --card:#0F2F4D;
+  --blue:#3A9AD9;
+  --orange:#FF8A2A;
+  --orange-deep:#FF5E00;
+  --surface:#050E1A;
+  --surface-2:#071A2E;
+  --ink:#FFFFFF;
+  --muted:#C7D6E3;
+  --line:rgba(255,255,255,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --navy:#050E1A;
+    --navy-2:#071A2E;
+    --navy-3:#0A2340;
+    --card:#0F2F4D;
+    --surface:#050E1A;
+    --surface-2:#071A2E;
+    --ink:#FFFFFF;
+    --muted:#C7D6E3;
+    --line:rgba(255,255,255,.08);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#050E1A;color:#FFFFFF;font-family:'Inter','Plus Jakarta Sans',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:'Plus Jakarta Sans','Inter',system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.02}
+a{color:inherit}
+button{font-family:inherit}
+::selection{background:#FF5E00;color:#fff}
+.eyebrow{font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:#FF8A2A}
+.card-shadow{box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.soft-shadow{box-shadow:0 14px 36px rgba(0,0,0,.35)}
+input,select,textarea{font-family:inherit;color:#0B1A27;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid #FF8A2A;outline-offset:1px;border-color:#FF8A2A}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.floaty{animation:floaty 5s ease-in-out infinite}
+@keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.floaty2{animation:floaty2 6s ease-in-out infinite}
+.text-gradient{background:linear-gradient(90deg,#FF8A2A,#FF5E00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-rotating{overflow:visible;line-height:1.3;padding-bottom:0.18em;white-space:nowrap;font-size:clamp(1.9rem,7.5vw,3.6rem);font-weight:800;flex:1 1 auto;flex-shrink:1;min-width:0}
+.hero-rotating--appointments{font-size:clamp(1.15rem,4.8vw,2.7rem);flex-shrink:1;white-space:nowrap}
+.glass{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
+.orange-glow{box-shadow:0 18px 55px rgba(255,94,0,.28),0 0 0 1px rgba(255,138,42,.35)}
+/* Hero photo only — sits down on the ticker, zoomed, shifted right on larger screens.
+   No overlay / filter / darkening: the original shirt print color is untouched. */
+#top{overflow-y:visible;overflow-x:clip;position:relative;z-index:10}
+.hero-photo-wrap{overflow:visible;align-self:flex-end;position:relative;z-index:20;max-width:100%;transform:translateY(35px);margin-bottom:-35px}
+.hero-photo-zoom{transform:scale(1.15);transform-origin:center bottom;opacity:1}
+@media (max-width: 767px){
+  .hero-photo-zoom{transform:scale(1.15);max-height:none}
+}
+/* Tablet only (768–1023px): right column stretches, photo aligns to its top,
+   zoomed 1.25x from the top center, shifted right 30px. Layout below stays stacked. */
+@media (min-width: 768px) and (max-width: 1023px){
+  .hero-photo-wrap{align-self:stretch !important;height:100%;display:flex;align-items:flex-start;justify-content:center;transform:translateX(30px);margin-bottom:-45px;margin-top:0}
+  .hero-photo-zoom{transform:scale(1.25);transform-origin:top center;max-height:680px;width:auto;max-width:100%;object-fit:contain;object-position:top center}
+}
+/* Hero photo — LANDSCAPE / LAPTOP / DESKTOP ONLY.
+   TRUE ZOOM X4: scale(1.60) from bottom center, no height cap.
+   Mobile (max-width: 767px) and tablet portrait keep the rules above, unchanged. */
+@media (min-width: 768px) and (orientation: landscape){
+  #top{overflow-x:clip !important;overflow-y:visible !important}
+  .hero-photo-wrap{overflow:visible !important;display:flex !important;align-items:flex-end !important;justify-content:center !important;align-self:flex-end !important;flex:1 1 55% !important;min-width:0 !important;width:100% !important;max-width:100% !important;padding:0 !important;margin:0 !important;transform:none !important;translate:0 0 !important;scale:1 !important;background:transparent !important;border:none !important;box-shadow:none !important}
+  .hero-photo-zoom{display:block !important;width:100% !important;max-width:640px !important;height:auto !important;max-height:none !important;object-fit:contain !important;object-position:center bottom !important;margin:0 auto !important;padding-top:0 !important;padding:0 !important;margin-top:0 !important;transform:translateY(40px) scale(1.60) !important;transform-origin:bottom center !important;background:transparent !important;border:none !important;box-shadow:none !important}
+}
+/* Desktop (1024px+): same true-zoom X4 rules. */
+@media (min-width: 1024px){
+  #top{overflow-x:clip !important;overflow-y:visible !important}
+  .hero-photo-wrap{overflow:visible !important;display:flex !important;align-items:flex-end !important;justify-content:center !important;align-self:flex-end !important;flex:1 1 55% !important;min-width:0 !important;width:100% !important;max-width:100% !important;padding:0 !important;margin:0 !important;transform:none !important;translate:0 0 !important;scale:1 !important;background:transparent !important;border:none !important;box-shadow:none !important}
+  .hero-photo-zoom{display:block !important;width:100% !important;max-width:640px !important;height:auto !important;max-height:none !important;object-fit:contain !important;object-position:center bottom !important;margin:0 auto !important;padding-top:0 !important;padding:0 !important;margin-top:0 !important;transform:translateY(40px) scale(1.60) !important;transform-origin:bottom center !important;background:transparent !important;border:none !important;box-shadow:none !important}
+}
+/* Floating WhatsApp CTA — hidden on mobile/phone only. Visible on tablet and larger. */
+@media (max-width: 767px){
+  .whatsapp-floating-cta{display:none !important}
+}
+/* Floating WhatsApp CTA — removed on landscape, laptop and desktop. */
+@media (min-width: 768px) and (orientation: landscape){
+  .whatsapp-floating-cta{display:none !important}
+}
+@media (min-width: 1024px){
+  .whatsapp-floating-cta{display:none !important}
+}
+/* Sticky bottom CTA — REMOVED entirely on landscape, laptop and desktop.
+   Stays only on mobile / tablet portrait. */
+@media (min-width: 1024px){
+  #stickyCta, .sticky-cta, .sticky-bottom-cta{display:none !important;visibility:hidden !important;height:0 !important}
+}
+@media (orientation: landscape){
+  #stickyCta, .sticky-cta, .sticky-bottom-cta{display:none !important;visibility:hidden !important;height:0 !important}
+}
