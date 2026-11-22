@@ -29,16 +29,44 @@ const monthly: Plan[] = [
 
 const allPlans = [...oneTime.map(p=>({label:`${p.name} — ${p.price} (One-Time)`, value:`${p.name} — One-Time`})), ...monthly.map(p=>({label:`${p.name} — ${p.price}/month (Monthly)`, value:`${p.name} — Monthly`}))];
 
-const planPaymentDetails: Record<string, { price:string; ctaPrice:string; summaryPrice:string; isMonthly:boolean; paymentUrl:string }> = {
-  "Setup Only": { price:"₦20,000", ctaPrice:"₦20,000", summaryPrice:"₦20,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/mpfzyxnayygm" },
-  "Audit": { price:"₦45,000", ctaPrice:"₦45,000", summaryPrice:"₦45,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/rotdn5v1oxz1" },
-  "Launch": { price:"₦75,000", ctaPrice:"₦75,000", summaryPrice:"₦75,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/puvwlyl3fcce" },
-  "Build": { price:"₦150,000", ctaPrice:"₦150,000", summaryPrice:"₦150,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/00dmqsnlutkd" },
-  "Full Funnel": { price:"₦250,000", ctaPrice:"₦250,000", summaryPrice:"₦250,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/gwnh3ieykjgk" },
-  "Essential": { price:"₦110,000", ctaPrice:"₦110,000/mo", summaryPrice:"₦110,000/month", isMonthly:true, paymentUrl:"https://flutterwave.com/pay/ukx0kpnswhro" },
-  "Growth": { price:"₦165,000", ctaPrice:"₦165,000/mo", summaryPrice:"₦165,000/month", isMonthly:true, paymentUrl:"https://flutterwave.com/pay/ohd9cxecfsqo" },
-  "Scale": { price:"₦290,000", ctaPrice:"₦290,000/mo", summaryPrice:"₦290,000/month", isMonthly:true, paymentUrl:"https://flutterwave.com/pay/gbvuosgkhb8o" },
+const planPaymentDetails: Record<string, { price:string; amount:number; ctaPrice:string; summaryPrice:string; isMonthly:boolean; paymentUrl:string }> = {
+  "Setup Only": { price:"₦20,000", amount:20000, ctaPrice:"₦20,000", summaryPrice:"₦20,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/mpfzyxnayygm" },
+  "Audit": { price:"₦45,000", amount:45000, ctaPrice:"₦45,000", summaryPrice:"₦45,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/rotdn5v1oxz1" },
+  "Launch": { price:"₦75,000", amount:75000, ctaPrice:"₦75,000", summaryPrice:"₦75,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/puvwlyl3fcce" },
+  "Build": { price:"₦150,000", amount:150000, ctaPrice:"₦150,000", summaryPrice:"₦150,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/00dmqsnlutkd" },
+  "Full Funnel": { price:"₦250,000", amount:250000, ctaPrice:"₦250,000", summaryPrice:"₦250,000 One-Time", isMonthly:false, paymentUrl:"https://flutterwave.com/pay/gwnh3ieykjgk" },
+  "Essential": { price:"₦110,000", amount:110000, ctaPrice:"₦110,000/mo", summaryPrice:"₦110,000/month", isMonthly:true, paymentUrl:"https://flutterwave.com/pay/ukx0kpnswhro" },
+  "Growth": { price:"₦165,000", amount:165000, ctaPrice:"₦165,000/mo", summaryPrice:"₦165,000/month", isMonthly:true, paymentUrl:"https://flutterwave.com/pay/ohd9cxecfsqo" },
+  "Scale": { price:"₦290,000", amount:290000, ctaPrice:"₦290,000/mo", summaryPrice:"₦290,000/month", isMonthly:true, paymentUrl:"https://flutterwave.com/pay/gbvuosgkhb8o" },
 };
+
+const FLUTTERWAVE_PUBLIC_KEY =
+  (import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY as string | undefined) ||
+  "FLWPUBK_TEST-83061bfd488c112ee093321ebd04d76a-X";
+
+function ensureFlutterwaveScript(): Promise<void> {
+  if (typeof window !== "undefined" && typeof window.FlutterwaveCheckout === "function") {
+    return Promise.resolve();
+  }
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector('script[src="https://checkout.flutterwave.com/v3.js"]');
+    if (existing) {
+      if (typeof window.FlutterwaveCheckout === "function") {
+        resolve();
+      } else {
+        existing.addEventListener("load", () => resolve());
+        existing.addEventListener("error", () => reject(new Error("Failed to load Flutterwave script")));
+      }
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://checkout.flutterwave.com/v3.js";
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Failed to load Flutterwave script"));
+    document.head.appendChild(script);
+  });
+}
 
 const faqs = [
   { q:"Do you guarantee sales?", a:"No honest media buyer can guarantee sales. What we guarantee is structure: clean tracking, a real funnel, creative built to convert, and disciplined optimisation. Your offer, pricing, and follow-up still matter — and we will tell you plainly where they need work." },
@@ -228,13 +256,15 @@ export default function App(){
   const selectedPlanDetails = selectedPlanName ? planPaymentDetails[selectedPlanName] : undefined;
   const ctaText = "Pay Now →";
   const planSummaryText = selectedPlanDetails ? `Selected: ${selectedPlanName} — ${selectedPlanDetails.summaryPrice} • ${selectedPlanDetails.isMonthly ? "Minimum 2 months • " : ""}Ad spend NOT included` : "";
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSending) return;
     setIsSending(true);
     const planName = selectedPlan ? selectedPlan.split(" — ")[0].trim() : "";
-    const paymentUrl = planName ? planPaymentDetails[planName]?.paymentUrl : undefined;
-    const destination = paymentUrl ?? "https://flutterwave.com/pay/puvwlyl3fcce";
+    const planDetails = planName ? planPaymentDetails[planName] : undefined;
+    const amount = planDetails?.amount ?? 75000;
+    const txRef = `VS_${Date.now()}_${Math.floor(Math.random() * 1000000)}`;
+
     try {
       fetch("https://formsubmit.co/ajax/b9b501a5ebe69924b6d7c1e2618256a8", {
         method: "POST",
@@ -248,6 +278,7 @@ export default function App(){
           budget: form.budget,
           goal: form.goal,
           message: form.message,
+          tx_ref: txRef,
           _subject: "New VerveScale Lead - " + selectedPlan,
           _template: "table",
           _captcha: "false"
@@ -257,7 +288,70 @@ export default function App(){
     } catch {
       // Keep the checkout flow moving even if sending the lead fails.
     }
-    window.location.href = destination;
+
+    try {
+      await ensureFlutterwaveScript();
+
+      if (typeof window.FlutterwaveCheckout !== "function") {
+        throw new Error("Flutterwave Checkout script not available");
+      }
+
+      window.FlutterwaveCheckout({
+        public_key: FLUTTERWAVE_PUBLIC_KEY,
+        tx_ref: txRef,
+        amount: amount,
+        currency: "NGN",
+        payment_options: "card,banktransfer,ussd",
+        customer: {
+          email: form.email.trim(),
+          phone_number: form.whatsapp.trim(),
+          name: form.name.trim(),
+        },
+        customizations: {
+          title: "VerveScale Digital",
+          description: `Payment for ${selectedPlanName || selectedPlan}`,
+          logo: "https://vervescale.vercel.app/favicon.png",
+        },
+        callback: (response: any) => {
+          if (response?.status === "successful" || response?.status === "completed") {
+            try {
+              fetch("https://formsubmit.co/ajax/b9b501a5ebe69924b6d7c1e2618256a8", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify({
+                  payment_status: "SUCCESSFUL",
+                  flw_ref: response.flw_ref,
+                  tx_ref: response.tx_ref || txRef,
+                  transaction_id: response.transaction_id,
+                  amount: response.amount || amount,
+                  currency: response.currency || "NGN",
+                  name: form.name,
+                  email: form.email,
+                  whatsapp: form.whatsapp,
+                  plan: selectedPlan,
+                  _subject: "✅ PAYMENT CONFIRMED: " + selectedPlan + " - " + form.name,
+                  _template: "table",
+                  _captcha: "false"
+                }),
+                keepalive: true
+              }).catch(() => {});
+            } catch {}
+
+            window.location.href = "/thank-you";
+          } else {
+            setIsSending(false);
+          }
+        },
+        onclose: () => {
+          setIsSending(false);
+        },
+      });
+    } catch (err) {
+      console.error("Flutterwave inline checkout failed, fallback to payment link:", err);
+      const paymentUrl = planDetails?.paymentUrl;
+      const destination = paymentUrl ?? "https://flutterwave.com/pay/puvwlyl3fcce";
+      window.location.href = destination;
+    }
   };
   const plans = tab==="one"? oneTime : monthly;
 
@@ -444,7 +538,7 @@ export default function App(){
               </div>
               {selectedPlanDetails && <p aria-live="polite" className="mt-4 text-center text-xs font-bold leading-relaxed text-slate-600">{planSummaryText}</p>}
               <button type="submit" className={`mt-5 flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-extrabold text-white hover:brightness-110 ${isSending ? "bg-green-600" : "bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00]"}`}>{isSending ? "Processing..." : ctaText} <ArrowRight size={18}/></button>
-              <p className="mt-3 text-center text-xs font-semibold text-slate-500">You&apos;ll be taken to secure Flutterwave checkout for {selectedPlanName} — {selectedPlanDetails?.ctaPrice ?? "₦75,000"}.</p>
+              <p className="mt-3 text-center text-xs font-semibold text-slate-500">Secure Flutterwave checkout for {selectedPlanName} — {selectedPlanDetails?.ctaPrice ?? "₦75,000"}.</p>
               <p className="mt-2 text-center text-xs font-semibold text-slate-500">We reply within 24 hours on WhatsApp.</p>
             </form>
           </div>
