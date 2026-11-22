@@ -73,7 +73,7 @@ const faqs = [
   { q:"What if I have no creatives?", a:"Start with Audit or Launch. We write your ad copy and design the creatives included in your plan. If you have photos or videos already, we will use the strongest ones and tell you exactly what else to shoot." },
   { q:"How fast do we launch?", a:"A focused Launch plan goes live in 3–5 days once we have your assets, offer details, and access. Larger funnel builds take longer because the system behind the ad needs to be right." },
   { q:"Is ad spend included?", a:"No. Ad spend is NOT included. You pay Meta directly, so your money stays in your account and you can see exactly what goes to ads versus our service fee." },
-  { q:"Do I need a website?", a:"Not always. Many Lagos businesses sell through WhatsApp. We review your WhatsApp flow or landing page and build the funnel around the route your customers already trust." },
+  { q:"Do I need a website?", a:"Not always. Many businesses sell through WhatsApp. We review your WhatsApp flow or landing page and build the funnel around the route your customers already trust." },
   { q:"What do you need from me to start?", a:"Your offer, your best customer in one sentence, your product photos or videos, and access to your Business Manager or ad account. From there, we handle strategy, creative, setup, and launch." },
 ];
 
