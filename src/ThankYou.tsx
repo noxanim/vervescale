@@ -98,7 +98,7 @@ export default function ThankYou() {
         </div>
 
         <h1 className="mt-6 text-[clamp(1.85rem,8vw,2.75rem)] font-extrabold leading-[1.08] tracking-tight [overflow-wrap:anywhere]">
-          Thank You —<br />Payment Received!
+          Thank You<br />Payment Received!
         </h1>
 
         <p className="mt-4 max-w-[430px] text-[15px] leading-6 text-[var(--muted)] sm:text-base">
