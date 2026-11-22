@@ -42,7 +42,7 @@ const planPaymentDetails: Record<string, { price:string; amount:number; ctaPrice
 
 const FLUTTERWAVE_PUBLIC_KEY =
   (import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY as string | undefined) ||
-  "FLWPUBK_TEST-83061bfd488c112ee093321ebd04d76a-X";
+  "FLWPUBK-c1984a390ffa590172e1b50364fd40c3-X";
 
 function ensureFlutterwaveScript(): Promise<void> {
   if (typeof window !== "undefined" && typeof window.FlutterwaveCheckout === "function") {
