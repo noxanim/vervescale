@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import App from "./App";
 import "./index.css";
 
@@ -17,12 +18,20 @@ function Root() {
   const normalized = path.toLowerCase().replace(/\/+$/, "");
   if (normalized === "/thank-you" || normalized.startsWith("/thank-you/")) {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-[#050E1A]" />}>
-        <ThankYou />
-      </Suspense>
+      <>
+        <Suspense fallback={<div className="min-h-screen bg-[#050E1A]" />}>
+          <ThankYou />
+        </Suspense>
+        <SpeedInsights />
+      </>
     );
   }
-  return <App />;
+  return (
+    <>
+      <App />
+      <SpeedInsights />
+    </>
+  );
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
