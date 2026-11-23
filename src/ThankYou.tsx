@@ -198,7 +198,7 @@ export default function ThankYou() {
         </p>
 
         <a
-          href="https://vervescale.vercel.app"
+          href="https://www.vervescaledigital.com.ng/"
           target="_blank"
           rel="noopener"
           className="mt-7 text-sm font-semibold text-white/80 underline decoration-white/30 underline-offset-4 hover:text-white"
