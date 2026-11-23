@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import logoUrl from "./assets/thank_you_logo.webp";
 
 const whatsappMessage =
@@ -6,12 +7,57 @@ const whatsappUrl =
   "https://wa.me/2348135831548?text=" + encodeURIComponent(whatsappMessage);
 
 export default function ThankYou() {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const partnerId = "10140962";
+      (window as any)._linkedin_partner_id = partnerId;
+      (window as any)._linkedin_data_partner_ids =
+        (window as any)._linkedin_data_partner_ids || [];
+      if (!(window as any)._linkedin_data_partner_ids.includes(partnerId)) {
+        (window as any)._linkedin_data_partner_ids.push(partnerId);
+      }
+
+      if (!(window as any).lintrk) {
+        (window as any).lintrk = function (a: any, b: any) {
+          (window as any).lintrk.q.push([a, b]);
+        };
+        (window as any).lintrk.q = [];
+      }
+
+      if (!document.querySelector('script[src*="snap.licdn.com/li.lms-analytics/insight.min.js"]')) {
+        const s = document.getElementsByTagName("script")[0];
+        const b = document.createElement("script");
+        b.type = "text/javascript";
+        b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        if (s && s.parentNode) {
+          s.parentNode.insertBefore(b, s);
+        } else {
+          document.head.appendChild(b);
+        }
+      }
+
+      if (typeof (window as any).lintrk === "function") {
+        (window as any).lintrk("track");
+      }
+    }
+  }, []);
+
   return (
     <main
       data-safe-area-inset-root
       className="min-h-[100dvh] w-full overflow-x-clip bg-[var(--navy)] text-[var(--text)]"
       style={{ boxSizing: "border-box", paddingTop: "var(--safe-area-inset-top)" }}
     >
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          alt=""
+          src="https://px.ads.linkedin.com/collect/?pid=10140962&fmt=gif"
+        />
+      </noscript>
       <style>{`
         @keyframes checkmark-pop {
           0% { transform: scale(0.5); opacity: 0; }
