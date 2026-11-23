@@ -44,6 +44,10 @@ export default function ThankYou() {
       if (typeof (window as any).fbq === "function") {
         (window as any).fbq("track", "Purchase");
       }
+
+      if (typeof (window as any).rdt === "function") {
+        (window as any).rdt("track", "Purchase");
+      }
     }
   }, []);
 
