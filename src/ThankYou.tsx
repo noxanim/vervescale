@@ -40,6 +40,10 @@ export default function ThankYou() {
       if (typeof (window as any).lintrk === "function") {
         (window as any).lintrk("track");
       }
+
+      if (typeof (window as any).fbq === "function") {
+        (window as any).fbq("track", "Purchase");
+      }
     }
   }, []);
 
@@ -56,6 +60,15 @@ export default function ThankYou() {
           style={{ display: "none" }}
           alt=""
           src="https://px.ads.linkedin.com/collect/?pid=10140962&fmt=gif"
+        />
+      </noscript>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          alt=""
+          src="https://www.facebook.com/tr?id=1873021890505457&ev=Purchase&noscript=1"
         />
       </noscript>
       <style>{`
