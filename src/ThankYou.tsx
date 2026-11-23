@@ -60,6 +60,9 @@ export default function ThankYou() {
           event_category: "ecommerce",
           event_label: "Purchase Completed"
         });
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-18590974384"
+        });
       }
     }
   }, []);
