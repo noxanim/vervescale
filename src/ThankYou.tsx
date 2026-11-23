@@ -48,6 +48,19 @@ export default function ThankYou() {
       if (typeof (window as any).rdt === "function") {
         (window as any).rdt("track", "Purchase");
       }
+
+      if (typeof (window as any).dataLayer !== "undefined") {
+        (window as any).dataLayer.push({
+          event: "purchase",
+          page_type: "thank_you"
+        });
+      }
+      if (typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "purchase", {
+          event_category: "ecommerce",
+          event_label: "Purchase Completed"
+        });
+      }
     }
   }, []);
 
