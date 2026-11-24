@@ -293,16 +293,135 @@ const nigerianReviews: NigerianReview[] = [
   }
 ];
 
-const recentPurchases = [
-  { name: "Emeka O.", location: "Ikeja, Lagos", plan: "Launch Plan (₦75k)", time: "3 minutes ago" },
-  { name: "Hajiya Aisha", location: "Wuse 2, Abuja", plan: "Essential Monthly (₦110k)", time: "7 minutes ago" },
-  { name: "Tunde Adeyemi", location: "Lekki, Lagos", plan: "Full Funnel (₦250k)", time: "14 minutes ago" },
-  { name: "Dr. Amarachi K.", location: "Port Harcourt", plan: "Build Plan (₦150k)", time: "22 minutes ago" },
-  { name: "Folake Balogun", location: "Ibadan", plan: "Launch Plan (₦75k)", time: "29 minutes ago" },
-  { name: "Kelechi Nnamdi", location: "Alaba, Lagos", plan: "Growth Monthly (₦165k)", time: "38 minutes ago" },
-  { name: "Ibrahim Musa", location: "Kano", plan: "Setup Only (₦20k)", time: "47 minutes ago" },
-  { name: "Blessing Idowu", location: "Yaba, Lagos", plan: "Audit Plan (₦45k)", time: "1 hour ago" },
+const FIRST_NAMES = [
+  "Emeka", "Chinedu", "Tunde", "Olumide", "Ibrahim", "Kelechi", "Babatunde", "Somto",
+  "Uchenna", "Femi", "Segun", "Chidi", "Victor", "David", "Samuel", "Musa", "Usman",
+  "Dapo", "Tobi", "Ifeanyi", "Nonso", "Chibuike", "Obinna", "Adebayo", "Kayode",
+  "Ejiro", "Osas", "Kunle", "Farouk", "Mustapha", "Jide", "Seyi", "Chima", "Efe",
+  "Amina", "Folake", "Blessing", "Chidinma", "Amarachi", "Fatima", "Damilola", "Zainab",
+  "Chisom", "Ngozi", "Kemi", "Halima", "Maryam", "Bukola", "Yetunde", "Temitope",
+  "Faith", "Grace", "Peace", "Nneka", "Adanna", "Ronke", "Simi", "Bimbo", "Eniola",
+  "Olamide", "Titilayo", "Funke", "Rukayat", "Hadiza", "Chioma", "Omolara", "Zubaida"
 ];
+
+const LAST_NAMES = [
+  "Okafor", "Adeleke", "Bello", "Balogun", "Adeyemi", "Nnamdi", "Okonkwo", "Danjuma",
+  "Alabi", "Lawal", "Eze", "Nwosu", "Ojo", "Bakare", "Abubakar", "Ogundele",
+  "Williams", "Oladipo", "Igwe", "Sanusi", "Kalu", "Mohammed", "Suleiman", "Ajayi",
+  "Ogunleye", "Idowu", "Chukwuma", "Adeniyi", "Afolabi", "Onyeka", "Bamidele", "Bassey",
+  "Effiong", "Utomi", "Soyinka", "Giwa", "Garba", "Ige", "Balarabe", "Momoh", "Anosike",
+  "Ibrahim", "Akinola", "Obi", "Dike"
+];
+
+const LOCATIONS = [
+  "Ikeja, Lagos", "Lekki Phase 1, Lagos", "Victoria Island, Lagos", "Surulere, Lagos",
+  "Yaba, Lagos", "Wuse 2, Abuja", "Gwarinpa, Abuja", "Maitama, Abuja", "GRA, Port Harcourt",
+  "Trans Amadi, Port Harcourt", "Bodija, Ibadan", "Ring Road, Ibadan", "Independence Layout, Enugu",
+  "GRA, Benin City", "Asaba, Delta", "Kano Municipal, Kano", "Kaduna North, Kaduna",
+  "Calabar, Cross River", "Owerri, Imo", "Festac Town, Lagos", "Ajah, Lagos",
+  "Magodo Phase 2, Lagos", "Alausa, Ikeja", "Garki, Abuja", "Uyo, Akwa Ibom", "Abeokuta, Ogun",
+  "Ilorin, Kwara", "Warri, Delta"
+];
+
+const PLANS = [
+  "Launch Plan (₦75k)",
+  "Essential Monthly (₦110k/mo)",
+  "Build Plan (₦150k)",
+  "Growth Monthly (₦165k/mo)",
+  "Audit Plan (₦45k)",
+  "Full Funnel (₦250k)",
+  "Setup Only (₦20k)",
+  "Scale Monthly (₦290k/mo)",
+  "Launch Plan (₦75k)",
+  "Essential Monthly (₦110k/mo)"
+];
+
+const RECENT_TIMES = [
+  "Just now", "2 minutes ago", "3 minutes ago", "5 minutes ago", "7 minutes ago",
+  "9 minutes ago", "12 minutes ago", "15 minutes ago", "19 minutes ago", "24 minutes ago",
+  "31 minutes ago", "42 minutes ago", "55 minutes ago", "1 hour ago"
+];
+
+function getSeenNames(): string[] {
+  try {
+    const raw = typeof window !== "undefined" ? window.localStorage.getItem("vervescale_seen_buyers") : null;
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function recordSeenName(name: string) {
+  try {
+    if (typeof window === "undefined") return;
+    const current = getSeenNames();
+    const updated = [name, ...current.filter((n) => n !== name)].slice(0, 180);
+    window.localStorage.setItem("vervescale_seen_buyers", JSON.stringify(updated));
+  } catch {
+    // Safely ignore private browsing or quota limits
+  }
+}
+
+type PurchaseItem = {
+  name: string;
+  initials: string;
+  location: string;
+  plan: string;
+  time: string;
+};
+
+function generateRandomPurchase(lastPlan?: string, lastLocation?: string): PurchaseItem {
+  const seen = new Set(getSeenNames());
+
+  let chosenName = "";
+  // Try up to 60 iterations to find an unseen combination
+  for (let attempt = 0; attempt < 60; attempt++) {
+    const fn = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
+    const ln = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+    // 75% full name (e.g. "Chinedu Okafor"), 25% with last initial (e.g. "Amina B.")
+    const candidate = Math.random() > 0.25 ? `${fn} ${ln}` : `${fn} ${ln[0]}.`;
+    if (!seen.has(candidate)) {
+      chosenName = candidate;
+      break;
+    }
+  }
+
+  // Fallback if extensive browsing exhausted the set
+  if (!chosenName) {
+    const fn = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
+    const ln = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+    chosenName = `${fn} ${ln}`;
+  }
+
+  recordSeenName(chosenName);
+
+  // Pick location avoiding immediate repeat
+  const locPool = LOCATIONS.filter((l) => l !== lastLocation);
+  const location = locPool[Math.floor(Math.random() * locPool.length)] || LOCATIONS[0];
+
+  // Pick plan avoiding immediate repeat
+  const planPool = PLANS.filter((p) => p !== lastPlan);
+  const plan = planPool[Math.floor(Math.random() * planPool.length)] || PLANS[0];
+
+  // Pick realistic recent time
+  const time = RECENT_TIMES[Math.floor(Math.random() * RECENT_TIMES.length)];
+
+  const initials = chosenName
+    .replace(".", "")
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  return {
+    name: chosenName,
+    initials,
+    location,
+    plan,
+    time
+  };
+}
 
 function StarRating({ rating }: { rating: number }) {
   const fullStars = Math.floor(rating);
@@ -328,12 +447,20 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 function FloatingSocialProof() {
-  const [index, setIndex] = useState(0);
+  const [current, setCurrent] = useState<PurchaseItem | null>(null);
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const lastSeenRef = useRef<{ plan?: string; location?: string }>({});
 
   useEffect(() => {
-    if (dismissed) return;
+    // Generate fresh non-repetitive purchase on initial load / return visit
+    const first = generateRandomPurchase();
+    lastSeenRef.current = { plan: first.plan, location: first.location };
+    setCurrent(first);
+  }, []);
+
+  useEffect(() => {
+    if (dismissed || !current) return;
 
     // First appearance after 3.5 seconds
     const timer = window.setTimeout(() => {
@@ -341,26 +468,28 @@ function FloatingSocialProof() {
     }, 3500);
 
     return () => window.clearTimeout(timer);
-  }, [dismissed]);
+  }, [dismissed, !!current]);
 
   useEffect(() => {
-    if (dismissed) return;
+    if (dismissed || !current) return;
 
-    // Cycle every 8.5 seconds: fade out, switch, fade in
+    // Cycle every 8.5 seconds: fade out, generate brand new non-repetitive buyer, fade in
     const interval = window.setInterval(() => {
       setVisible(false);
       window.setTimeout(() => {
-        setIndex((prev) => (prev + 1) % recentPurchases.length);
-        if (!dismissed) setVisible(true);
+        if (!dismissed) {
+          const next = generateRandomPurchase(lastSeenRef.current.plan, lastSeenRef.current.location);
+          lastSeenRef.current = { plan: next.plan, location: next.location };
+          setCurrent(next);
+          setVisible(true);
+        }
       }, 600);
     }, 8500);
 
     return () => window.clearInterval(interval);
-  }, [dismissed]);
+  }, [dismissed, !!current]);
 
-  if (dismissed) return null;
-
-  const current = recentPurchases[index];
+  if (dismissed || !current) return null;
 
   return (
     <aside
@@ -371,7 +500,7 @@ function FloatingSocialProof() {
     >
       <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-[#071A2E]/95 p-3.5 shadow-2xl backdrop-blur-md">
         <div className="relative mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A2A] to-[#FF5E00] text-xs font-black text-white shadow-md">
-          {current.name.split(" ").map((n) => n[0]).join("")}
+          {current.initials}
           <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-[#071A2E] bg-emerald-500" />
