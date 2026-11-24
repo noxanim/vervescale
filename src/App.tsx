@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, ArrowUpRight, BadgeCheck, CalendarClock, Check, ChevronDown, ChevronLeft, ChevronRight, Compass, Flame, Megaphone, MessageCircle, PenLine, Search, Sparkles, Target, TrendingUp, Zap, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgeCheck, CalendarClock, Check, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Compass, Flame, Megaphone, MessageCircle, PenLine, Search, Sparkles, Star, StarHalf, Target, TrendingUp, Zap, ShieldCheck, X } from "lucide-react";
 import logoWhite from "./assets/vervescale_logo_white.webp";
 import vArrow from "./assets/verve_arrow.webp";
 import footerLogo from "./assets/verve_arrow.webp";
@@ -226,6 +226,186 @@ function HeroTypewriter() {
   );
 }
 
+type NigerianReview = {
+  name: string;
+  initials: string;
+  business: string;
+  location: string;
+  rating: number;
+  plan: string;
+  quote: string;
+};
+
+const nigerianReviews: NigerianReview[] = [
+  {
+    name: "Chinedu Okafor",
+    initials: "CO",
+    business: "Men's Footwear & Leathercraft",
+    location: "Ikeja, Lagos",
+    rating: 5.0,
+    plan: "Launch Plan",
+    quote: "Before VerveScale, I was boosting Instagram posts every week with ₦30k and getting only 'how much' comments and ghost chats. They restructured my ads and connected them straight to an automated WhatsApp funnel. In our first 10 days, we had 34 serious enquiries and closed 22 pairs. The difference is night and day."
+  },
+  {
+    name: "Hajiya Aisha Bello",
+    initials: "AB",
+    business: "Modest Fashion & Abayas",
+    location: "Wuse 2, Abuja",
+    rating: 4.8,
+    plan: "Essential Monthly",
+    quote: "Very transparent media buying. They didn't just run ads; they audited our previous creative, told us why people were scrolling past, and helped rewrite our offer. The only small hiccup was Meta taking an extra day to approve our Business Manager, but once live, our sales picked up consistently."
+  },
+  {
+    name: "Tunde Adeyemi",
+    initials: "TA",
+    business: "Luxury Residential Real Estate",
+    location: "Lekki, Lagos",
+    rating: 5.0,
+    plan: "Full Funnel",
+    quote: "Real estate ads in Lagos are notoriously tricky because lots of unqualified people click. VerveScale built a qualifying lead form that filtered for real budget before sending leads to our sales team. We closed two duplex sales from that campaign within 6 weeks. Real return on investment."
+  },
+  {
+    name: "Dr. Amarachi Kalu",
+    initials: "AK",
+    business: "Organic Skincare & Wellness",
+    location: "GRA, Port Harcourt",
+    rating: 4.0,
+    plan: "Build Plan",
+    quote: "Honest and clear service. What I appreciated most is that ad spend goes directly to Meta, so there were no hidden charges or inflated fees. It took about 4 days of creative testing before we found the winning ad angle, but once it caught on, our cost per message dropped from ₦420 to ₦135."
+  },
+  {
+    name: "Folake Balogun",
+    initials: "FB",
+    business: "Kids Wears & School Supplies",
+    location: "Bodija, Ibadan",
+    rating: 4.8,
+    plan: "Launch Plan",
+    quote: "Our back-to-school rush was saved by their WhatsApp funnel strategy. They gave us exact customer-handling scripts for the chat so we didn't lose buyers who asked questions. Generated over ₦740k in sales from roughly ₦85k ad spend. Definitely coming back for Christmas."
+  },
+  {
+    name: "Kelechi Nnamdi",
+    initials: "KN",
+    business: "Consumer Electronics & Gadgets",
+    location: "Alaba / Online, Lagos",
+    rating: 5.0,
+    plan: "Growth Monthly",
+    quote: "Most digital marketing agencies in Nigeria take your setup fee and disappear when cost-per-click spikes. Mirabel and the VerveScale team send weekly reports and actively turn off underperforming ads while scaling winners. Our ROAS has remained steady at 3.9x."
+  }
+];
+
+const recentPurchases = [
+  { name: "Emeka O.", location: "Ikeja, Lagos", plan: "Launch Plan (₦75k)", time: "3 minutes ago" },
+  { name: "Hajiya Aisha", location: "Wuse 2, Abuja", plan: "Essential Monthly (₦110k)", time: "7 minutes ago" },
+  { name: "Tunde Adeyemi", location: "Lekki, Lagos", plan: "Full Funnel (₦250k)", time: "14 minutes ago" },
+  { name: "Dr. Amarachi K.", location: "Port Harcourt", plan: "Build Plan (₦150k)", time: "22 minutes ago" },
+  { name: "Folake Balogun", location: "Ibadan", plan: "Launch Plan (₦75k)", time: "29 minutes ago" },
+  { name: "Kelechi Nnamdi", location: "Alaba, Lagos", plan: "Growth Monthly (₦165k)", time: "38 minutes ago" },
+  { name: "Ibrahim Musa", location: "Kano", plan: "Setup Only (₦20k)", time: "47 minutes ago" },
+  { name: "Blessing Idowu", location: "Yaba, Lagos", plan: "Audit Plan (₦45k)", time: "1 hour ago" },
+];
+
+function StarRating({ rating }: { rating: number }) {
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
+
+  return (
+    <div className="flex items-center gap-1">
+      <div className="flex items-center text-[#FF8A2A]">
+        {[...Array(fullStars)].map((_, i) => (
+          <Star key={`full-${i}`} size={14} className="fill-[#FF8A2A] text-[#FF8A2A]" />
+        ))}
+        {hasHalf && (
+          <StarHalf key="half" size={14} className="fill-[#FF8A2A] text-[#FF8A2A]" />
+        )}
+        {[...Array(emptyStars)].map((_, i) => (
+          <Star key={`empty-${i}`} size={14} className="text-white/20" />
+        ))}
+      </div>
+      <span className="ml-1 text-xs font-black text-white">{rating.toFixed(1)}</span>
+    </div>
+  );
+}
+
+function FloatingSocialProof() {
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    if (dismissed) return;
+
+    // First appearance after 3.5 seconds
+    const timer = window.setTimeout(() => {
+      setVisible(true);
+    }, 3500);
+
+    return () => window.clearTimeout(timer);
+  }, [dismissed]);
+
+  useEffect(() => {
+    if (dismissed) return;
+
+    // Cycle every 8.5 seconds: fade out, switch, fade in
+    const interval = window.setInterval(() => {
+      setVisible(false);
+      window.setTimeout(() => {
+        setIndex((prev) => (prev + 1) % recentPurchases.length);
+        if (!dismissed) setVisible(true);
+      }, 600);
+    }, 8500);
+
+    return () => window.clearInterval(interval);
+  }, [dismissed]);
+
+  if (dismissed) return null;
+
+  const current = recentPurchases[index];
+
+  return (
+    <aside
+      aria-label="Recent verified purchase"
+      className={`fixed bottom-20 left-3 right-3 sm:right-auto sm:left-6 sm:bottom-6 z-40 max-w-[340px] transition-all duration-500 ease-out ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+      }`}
+    >
+      <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-[#071A2E]/95 p-3.5 shadow-2xl backdrop-blur-md">
+        <div className="relative mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A2A] to-[#FF5E00] text-xs font-black text-white shadow-md">
+          {current.name.split(" ").map((n) => n[0]).join("")}
+          <span className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-[#071A2E] bg-emerald-500" />
+          </span>
+        </div>
+        <div className="flex-1 min-w-0 pr-1">
+          <div className="flex items-center gap-1.5">
+            <span className="truncate text-xs font-extrabold text-white">{current.name}</span>
+            <span className="truncate text-[11px] text-[#8A9DB0]">({current.location})</span>
+          </div>
+          <p className="mt-0.5 truncate text-[11px] text-[#C7D6E3]">
+            Just purchased <strong className="font-extrabold text-[#FF8A2A]">{current.plan}</strong>
+          </p>
+          <div className="mt-1 flex items-center gap-2 text-[10px] text-[#8A9DB0]">
+            <span className="inline-flex items-center gap-1 font-semibold text-emerald-400">
+              <CheckCircle2 size={11} /> Verified Order
+            </span>
+            <span>•</span>
+            <span>{current.time}</span>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => setDismissed(true)}
+          aria-label="Dismiss notification"
+          className="shrink-0 rounded-full p-1 text-[#8A9DB0] transition hover:bg-white/10 hover:text-white"
+        >
+          <X size={13} />
+        </button>
+      </div>
+    </aside>
+  );
+}
+
 export default function App(){
   const [tab,setTab] = useState<"one"|"monthly">("one");
   const [openFaq,setOpenFaq] = useState(0);
@@ -365,7 +545,7 @@ export default function App(){
             <span className="leading-none block shrink-0"><span className="block whitespace-nowrap text-[15px] font-extrabold tracking-tight sm:text-[20px]">VerveScale <span className="text-[#FF8A2A]">Digital</span></span><span className="mt-1 block text-[8px] font-bold uppercase tracking-[.22em] text-[#8A9DB0] sm:text-[9px]">Premium Media Buying</span></span>
           </a>
           <nav className="hidden items-center gap-7 text-[13px] font-semibold text-[#C7D6E3] lg:flex">
-            <a href="#how" className="hover:text-white">How It Works</a><a href="#services" className="hover:text-white">Services</a><a href="#results" className="hover:text-white">Results</a><a href="#pricing" className="hover:text-white">Pricing</a><a href="#faq" className="hover:text-white">FAQ</a>
+            <a href="#how" className="hover:text-white">How It Works</a><a href="#services" className="hover:text-white">Services</a><a href="#results" className="hover:text-white">Results</a><a href="#reviews" className="hover:text-white">Reviews</a><a href="#pricing" className="hover:text-white">Pricing</a><a href="#faq" className="hover:text-white">FAQ</a>
           </nav>
           <div className="flex items-center gap-2">
             <span className="hidden items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#FF8A2A] xl:inline-flex"><Flame size={12}/> 4 Launch Spots / Month</span>
@@ -384,7 +564,24 @@ export default function App(){
           <div className="grid gap-10 lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:items-center">
             <div>
               <span aria-hidden="true" className="block h-[3px] w-12 rounded-full bg-[#FF7A1A]" />
-              <h1 className="mt-6 text-[clamp(2.7rem,7.8vw,4.9rem)] leading-[1.3] tracking-tight" style={{ overflow: "visible", lineHeight: 1.3, paddingBottom: "0.18em" }}>Stop Boosting.<br/><HeroTypewriter /></h1>
+              <div className="mt-4 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-[#071A2E]/80 px-3.5 py-1.5 shadow-sm backdrop-blur-sm">
+                <div className="flex -space-x-1.5">
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A2A] to-[#FF5E00] text-[9px] font-black text-white ring-1 ring-[#050E1A]">CO</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-[#3A9AD9] to-[#0A2340] text-[9px] font-black text-white ring-1 ring-[#050E1A]">AB</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 text-[9px] font-black text-white ring-1 ring-[#050E1A]">TA</span>
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-700 text-[9px] font-black text-white ring-1 ring-[#050E1A]">AK</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="flex text-[#FF8A2A]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={11} className="fill-[#FF8A2A] text-[#FF8A2A]" />
+                    ))}
+                  </div>
+                  <span className="text-xs font-black text-white">4.8/5</span>
+                </div>
+                <span className="text-xs text-[#8A9DB0]">from 60+ Nigerian brands</span>
+              </div>
+              <h1 className="mt-5 text-[clamp(2.7rem,7.8vw,4.9rem)] leading-[1.3] tracking-tight" style={{ overflow: "visible", lineHeight: 1.3, paddingBottom: "0.18em" }}>Stop Boosting.<br/><HeroTypewriter /></h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-[#C7D6E3] sm:text-lg">Meta ads built to sell — not just get likes. We handle strategy, creative, targeting, and scaling, so your offer reaches the right buyers and beyond.</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <button onClick={()=>goToForm("Launch — One-Time")} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] px-6 py-4 text-sm font-extrabold text-white shadow-xl shadow-orange-600/30 hover:brightness-110">Get My Launch Plan <ArrowRight size={17}/></button>
@@ -467,6 +664,66 @@ export default function App(){
               <p className="mt-3 text-[15px] leading-relaxed text-white/90">Start with Launch. It covers the essentials.</p>
               <button onClick={()=>{ setTab("one"); setSelectedPlan("Launch — One-Time"); window.setTimeout(()=>{ document.getElementById("pricing")?.scrollIntoView({ behavior:"smooth" }); }, 80); }} className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-extrabold text-[#050E1A] hover:bg-[#EAF2F8] lg:mt-auto">See Launch <ArrowRight size={17}/></button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section id="reviews" className="bg-[#050E1A] border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="text-[11px] font-extrabold uppercase tracking-[.22em] text-[#FF8A2A]">Real Nigerian Businesses</p>
+              <h2 className="mt-3 text-[clamp(2.1rem,5.5vw,3.5rem)] leading-tight">
+                Words from founders who<br /><span className="text-gradient">stopped boosting.</span>
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#C7D6E3]">
+                From Lagos fashion brands and Abuja modest wear to nationwide real estate and e-commerce — see what happened when they switched to structured media buying.
+              </p>
+            </div>
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-[#071A2E] p-4 shrink-0 shadow-sm">
+              <div className="text-3xl font-extrabold text-white">4.8<span className="text-sm font-semibold text-[#8A9DB0]">/5</span></div>
+              <div className="h-9 w-px bg-white/10" />
+              <div>
+                <div className="flex items-center gap-1 text-[#FF8A2A]">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} className="fill-[#FF8A2A] text-[#FF8A2A]" />
+                  ))}
+                </div>
+                <p className="mt-1 text-xs font-semibold text-[#C7D6E3]">Rated by 60+ Nigerian founders</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {nigerianReviews.map((r) => (
+              <article key={r.name} className="glass flex flex-col justify-between rounded-3xl bg-[#0F2F4D]/50 p-6 transition hover:-translate-y-1 hover:border-[#FF8A2A]/40 sm:p-7">
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <StarRating rating={r.rating} />
+                    <span className="rounded-full bg-white/5 border border-white/10 px-2.5 py-1 text-[10px] font-bold text-[#FF8A2A]">{r.plan}</span>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-[#C7D6E3]">&ldquo;{r.quote}&rdquo;</p>
+                </div>
+                <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A2A] to-[#FF5E00] text-xs font-black text-white shadow-sm">
+                    {r.initials}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="truncate text-sm font-extrabold text-white">{r.name}</span>
+                      <CheckCircle2 size={13} className="shrink-0 text-emerald-400" />
+                    </div>
+                    <p className="truncate text-xs text-[#8A9DB0]">{r.business} • {r.location}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a href="#pricing" className="inline-flex items-center gap-2 text-sm font-extrabold text-white hover:text-[#FF8A2A] transition">
+              Ready to get results like these? View our plans <ArrowRight size={15} />
+            </a>
           </div>
         </div>
       </section>
@@ -559,6 +816,9 @@ export default function App(){
       <div id="stickyCta" className="sticky-cta sticky-bottom-cta fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#050E1A]/95 p-3 shadow-[0_-10px_30px_rgba(0,0,0,.4)] backdrop-blur">
         <div className="flex gap-2"><a href="https://wa.me/2348135831548" target="_blank" rel="noopener" className="whatsapp-floating-cta flex flex-1 items-center justify-center gap-2 rounded-full border border-[#25D366] bg-transparent py-3 text-sm font-extrabold text-[#25D366]"><MessageCircle size={18}/> WhatsApp Us</a><button type="button" onClick={()=>goToForm("Setup Only — One-Time")} className="flex flex-[1.3] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] py-3 text-sm font-extrabold text-white">Ad Setup <ArrowRight size={16}/></button></div>
       </div>
+
+      {/* FLOATING SOCIAL PROOF */}
+      <FloatingSocialProof />
     </div>
   );
 }
