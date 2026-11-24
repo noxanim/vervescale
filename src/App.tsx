@@ -462,32 +462,34 @@ function FloatingSocialProof() {
   useEffect(() => {
     if (dismissed || !current) return;
 
-    // First appearance after 3.5 seconds
-    const timer = window.setTimeout(() => {
-      setVisible(true);
-    }, 3500);
+    let hideTimer: number;
+    let nextShowTimer: number;
 
-    return () => window.clearTimeout(timer);
-  }, [dismissed, !!current]);
+    const scheduleShow = (delayMs: number) => {
+      nextShowTimer = window.setTimeout(() => {
+        if (dismissed) return;
+        const next = generateRandomPurchase(lastSeenRef.current.plan, lastSeenRef.current.location);
+        lastSeenRef.current = { plan: next.plan, location: next.location };
+        setCurrent(next);
+        setVisible(true);
 
-  useEffect(() => {
-    if (dismissed || !current) return;
+        // Keep visible for 5.5 seconds, then hide and wait 14-20 seconds before next notification
+        hideTimer = window.setTimeout(() => {
+          setVisible(false);
+          const calmDelay = 14000 + Math.floor(Math.random() * 6000); // 14 to 20 seconds delay
+          scheduleShow(calmDelay);
+        }, 5500);
+      }, delayMs);
+    };
 
-    // Cycle every 8.5 seconds: fade out, generate brand new non-repetitive buyer, fade in
-    const interval = window.setInterval(() => {
-      setVisible(false);
-      window.setTimeout(() => {
-        if (!dismissed) {
-          const next = generateRandomPurchase(lastSeenRef.current.plan, lastSeenRef.current.location);
-          lastSeenRef.current = { plan: next.plan, location: next.location };
-          setCurrent(next);
-          setVisible(true);
-        }
-      }, 600);
-    }, 8500);
+    // Initial delay: wait 10 seconds before showing the first social proof notification
+    scheduleShow(10000);
 
-    return () => window.clearInterval(interval);
-  }, [dismissed, !!current]);
+    return () => {
+      window.clearTimeout(hideTimer);
+      window.clearTimeout(nextShowTimer);
+    };
+  }, [dismissed, !current]);
 
   if (dismissed || !current) return null;
 
