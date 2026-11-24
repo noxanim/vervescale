@@ -674,7 +674,7 @@ export default function App(){
             <span className="leading-none block shrink-0"><span className="block whitespace-nowrap text-[15px] font-extrabold tracking-tight sm:text-[20px]">VerveScale <span className="text-[#FF8A2A]">Digital</span></span><span className="mt-1 block text-[8px] font-bold uppercase tracking-[.22em] text-[#8A9DB0] sm:text-[9px]">Premium Media Buying</span></span>
           </a>
           <nav className="hidden items-center gap-7 text-[13px] font-semibold text-[#C7D6E3] lg:flex">
-            <a href="#how" className="hover:text-white">How It Works</a><a href="#services" className="hover:text-white">Services</a><a href="#results" className="hover:text-white">Results</a><a href="#reviews" className="hover:text-white">Reviews</a><a href="#pricing" className="hover:text-white">Pricing</a><a href="#faq" className="hover:text-white">FAQ</a>
+            <a href="#how" className="hover:text-white">How It Works</a><a href="#services" className="hover:text-white">Services</a><a href="#results" className="hover:text-white">Results</a><a href="#pricing" className="hover:text-white">Pricing</a><a href="#faq" className="hover:text-white">FAQ</a><a href="#reviews" className="hover:text-white">Reviews</a>
           </nav>
           <div className="flex items-center gap-2">
             <span className="hidden items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#FF8A2A] xl:inline-flex"><Flame size={12}/> 4 Launch Spots / Month</span>
@@ -693,7 +693,14 @@ export default function App(){
           <div className="grid gap-10 lg:grid-cols-[1.12fr_.88fr] lg:gap-12 lg:items-center">
             <div>
               <span aria-hidden="true" className="block h-[3px] w-12 rounded-full bg-[#FF7A1A]" />
-              <div className="mt-4 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-[#071A2E]/80 px-3.5 py-1.5 shadow-sm backdrop-blur-sm">
+              <h1 className="mt-6 text-[clamp(2.7rem,7.8vw,4.9rem)] leading-[1.3] tracking-tight" style={{ overflow: "visible", lineHeight: 1.3, paddingBottom: "0.18em" }}>Stop Boosting.<br/><HeroTypewriter /></h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#C7D6E3] sm:text-lg">Meta ads built to sell — not just get likes. We handle strategy, creative, targeting, and scaling, so your offer reaches the right buyers and beyond.</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <button onClick={()=>goToForm("Launch — One-Time")} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] px-6 py-4 text-sm font-extrabold text-white shadow-xl shadow-orange-600/30 hover:brightness-110">Get My Launch Plan <ArrowRight size={17}/></button>
+                <a href="#pricing" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-6 py-4 text-sm font-extrabold text-white hover:bg-white/5">See Pricing <ArrowUpRight size={17}/></a>
+              </div>
+              <p className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold text-[#8A9DB0]"><span>3–5 Day Launch</span><span className="text-[#FF8A2A]">•</span><span>No Guesswork</span><span className="text-[#FF8A2A]">•</span><span>Ad Spend Paid Directly to Meta</span></p>
+              <div className="mt-4 flex flex-wrap items-center gap-2.5">
                 <div className="flex -space-x-1.5">
                   <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-[#FF8A2A] to-[#FF5E00] text-[9px] font-black text-white ring-1 ring-[#050E1A]">CO</span>
                   <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-[#3A9AD9] to-[#0A2340] text-[9px] font-black text-white ring-1 ring-[#050E1A]">AB</span>
@@ -708,15 +715,8 @@ export default function App(){
                   </div>
                   <span className="text-xs font-black text-white">4.8/5</span>
                 </div>
-                <span className="text-xs text-[#8A9DB0]">from 60+ Nigerian brands</span>
+                <span className="text-xs text-[#8A9DB0]">rated by 60+ Nigerian founders</span>
               </div>
-              <h1 className="mt-5 text-[clamp(2.7rem,7.8vw,4.9rem)] leading-[1.3] tracking-tight" style={{ overflow: "visible", lineHeight: 1.3, paddingBottom: "0.18em" }}>Stop Boosting.<br/><HeroTypewriter /></h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#C7D6E3] sm:text-lg">Meta ads built to sell — not just get likes. We handle strategy, creative, targeting, and scaling, so your offer reaches the right buyers and beyond.</p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <button onClick={()=>goToForm("Launch — One-Time")} className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] px-6 py-4 text-sm font-extrabold text-white shadow-xl shadow-orange-600/30 hover:brightness-110">Get My Launch Plan <ArrowRight size={17}/></button>
-                <a href="#pricing" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-6 py-4 text-sm font-extrabold text-white hover:bg-white/5">See Pricing <ArrowUpRight size={17}/></a>
-              </div>
-              <p className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold text-[#8A9DB0]"><span>3–5 Day Launch</span><span className="text-[#FF8A2A]">•</span><span>No Guesswork</span><span className="text-[#FF8A2A]">•</span><span>Ad Spend Paid Directly to Meta</span></p>
               <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-6 sm:gap-8">
                 {[{n:"3–5",l:"days to launch"},{n:"9",l:"creatives in Full Funnel"},{n:"30",l:"days support"}].map(s=><div key={s.l}><div className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{s.n}</div><div className="mt-1.5 text-[11px] font-bold uppercase tracking-[.12em] text-[#8A9DB0]">{s.l}</div></div>)}
               </div>
@@ -797,8 +797,45 @@ export default function App(){
         </div>
       </section>
 
+      {/* PRICING */}
+      <section id="pricing" className="bg-[#071A2E]">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
+          <div className="text-center"><h2 className="mx-auto mt-3 max-w-3xl text-[clamp(2.1rem,5.5vw,3.5rem)]">Choose your<br/><span className="text-gradient">starting point.</span></h2><p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#C7D6E3]">Start lean and launch fast — or hand us the whole funnel and scale with support.</p></div>
+          <div className="mx-auto mt-8 flex w-fit rounded-full border border-white/10 bg-[#050E1A] p-1.5 shadow-sm" role="tablist" aria-label="Pricing period">
+            <button role="tab" aria-selected={tab==="one"} onClick={()=>setTab("one")} className={`rounded-full px-5 py-3 text-sm font-extrabold transition sm:px-8 ${tab==="one"?"bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white shadow-lg shadow-orange-600/30":"text-[#8A9DB0] hover:text-white"}`}>One-Time</button>
+            <button role="tab" aria-selected={tab==="monthly"} onClick={()=>setTab("monthly")} className={`rounded-full px-5 py-3 text-sm font-extrabold transition sm:px-8 ${tab==="monthly"?"bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white shadow-lg shadow-orange-600/30":"text-[#8A9DB0] hover:text-white"}`}>Monthly</button>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {plans.map(p=>{
+              const popular=!!p.tag;
+              return <article key={p.name} className={`relative flex flex-col rounded-[26px] p-6 transition hover:-translate-y-1 sm:p-7 ${popular?"bg-[#0A2340] text-white shadow-2xl ring-2 ring-[#FF8A2A] shadow-orange-600/20":"glass bg-[#0F2F4D]/50 shadow-sm hover:shadow-lg"}`}>
+                {popular && <span className="absolute -top-3 left-6 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider text-white shadow-lg">{p.tag}</span>}
+                <div className="flex items-start justify-between gap-3"><h3 className="text-[24px] leading-none">{p.name}</h3><span className={`rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${popular?"bg-white/10 text-white":"bg-[#FF8A2A]/15 text-[#FF8A2A]"}`}>{tab==="one"?"One-Time":"Monthly"}</span></div>
+                <div className="mt-4 flex items-baseline gap-1.5"><span className="text-[40px] font-extrabold leading-none tracking-tight">{p.price}</span>{tab==="monthly" && <span className="text-sm font-bold opacity-70">/month</span>}</div>
+                <div className="mt-4 h-px bg-white/10" />
+                <p className="mt-4 text-sm leading-relaxed text-[#C7D6E3]">{p.desc}</p>
+                <ul className="mt-5 flex-1 space-y-2.5">{p.gets.map(g=><li key={g} className="flex items-start gap-2.5 text-sm font-medium"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white"><Check size={12} strokeWidth={3}/></span><span>{g}</span></li>)}</ul>
+                {p.note && <p className="mt-4 rounded-xl bg-[#FF8A2A]/10 border border-[#FF8A2A]/20 p-3 text-xs font-bold leading-relaxed text-[#FFB98A]">{p.note}</p>}
+                {selectedPlan === `${p.name} — ${tab==="one"?"One-Time":"Monthly"}` && <p className="mt-4 flex items-start gap-1.5 rounded-xl bg-emerald-500/10 border border-emerald-400/20 px-3 py-2.5 text-xs font-extrabold text-emerald-300"><Check size={15} className="mt-0.5 shrink-0"/> Selected — your form below is set to {p.name}.</p>}
+                <button onClick={()=>goToForm(`${p.name} — ${tab==="one"?"One-Time":"Monthly"}`)} aria-pressed={selectedPlan === `${p.name} — ${tab==="one"?"One-Time":"Monthly"}`} className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] py-3.5 text-sm font-extrabold text-white hover:brightness-110">Start with {p.name} <ArrowRight size={17}/></button>
+              </article>;
+            })}
+          </div>
+          <div className="mt-6 rounded-2xl border border-dashed border-[#FF8A2A]/60 bg-[#050E1A] p-5 text-center text-sm font-bold leading-relaxed">Ad spend NOT included. You pay Meta directly. Service fee paid upfront before work starts. Minimum 2 months for monthly plans.</div>
+          <p className="mt-4 text-center text-sm text-[#C7D6E3]">Not sure which one fits? <a href="#contact" className="font-extrabold text-white underline decoration-[#FF8A2A] decoration-2 underline-offset-4">Book a free audit call →</a></p>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="bg-[#050E1A]">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
+          <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr]"><div><h2 className="mt-3 text-[clamp(2rem,5vw,3.2rem)]">Questions every<br/>smart buyer <span className="text-gradient">asks.</span></h2><p className="mt-4 max-w-md text-sm leading-relaxed text-[#C7D6E3]">If your question is not here, bring it to your free audit call. We would rather give you an honest “not yet” than sell you the wrong plan.</p></div>
+          <div className="space-y-3">{faqs.map((f,i)=><div key={f.q} className="overflow-hidden rounded-2xl border border-white/10 bg-[#071A2E] shadow-sm"><button onClick={()=>setOpenFaq(openFaq===i?-1:i)} aria-expanded={openFaq===i} className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"><span className="font-extrabold leading-snug">{f.q}</span><span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition ${openFaq===i?"bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white":"bg-white/5 text-[#FF8A2A]"}`}><ChevronDown size={18} className={`transition-transform ${openFaq===i?"rotate-180":""}`}/></span></button>{openFaq===i && <p className="border-t border-white/10 px-5 py-4 text-sm leading-relaxed text-[#C7D6E3]">{f.a}</p>}</div>)}</div></div>
+        </div>
+      </section>
+
       {/* REVIEWS */}
-      <section id="reviews" className="bg-[#050E1A] border-t border-white/10">
+      <section id="reviews" className="bg-[#071A2E] border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -810,7 +847,7 @@ export default function App(){
                 From Lagos fashion brands and Abuja modest wear to nationwide real estate and e-commerce — see what happened when they switched to structured media buying.
               </p>
             </div>
-            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-[#071A2E] p-4 shrink-0 shadow-sm">
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-[#050E1A] p-4 shrink-0 shadow-sm">
               <div className="text-3xl font-extrabold text-white">4.8<span className="text-sm font-semibold text-[#8A9DB0]">/5</span></div>
               <div className="h-9 w-px bg-white/10" />
               <div>
@@ -850,47 +887,10 @@ export default function App(){
             ))}
           </div>
           <div className="mt-8 text-center">
-            <a href="#pricing" className="inline-flex items-center gap-2 text-sm font-extrabold text-white hover:text-[#FF8A2A] transition">
-              Ready to get results like these? View our plans <ArrowRight size={15} />
+            <a href="#contact" className="inline-flex items-center gap-2 text-sm font-extrabold text-white hover:text-[#FF8A2A] transition">
+              Ready to get results like these? Claim your launch spot <ArrowRight size={15} />
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* PRICING */}
-      <section id="pricing" className="bg-[#071A2E]">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
-          <div className="text-center"><h2 className="mx-auto mt-3 max-w-3xl text-[clamp(2.1rem,5.5vw,3.5rem)]">Choose your<br/><span className="text-gradient">starting point.</span></h2><p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#C7D6E3]">Start lean and launch fast — or hand us the whole funnel and scale with support.</p></div>
-          <div className="mx-auto mt-8 flex w-fit rounded-full border border-white/10 bg-[#050E1A] p-1.5 shadow-sm" role="tablist" aria-label="Pricing period">
-            <button role="tab" aria-selected={tab==="one"} onClick={()=>setTab("one")} className={`rounded-full px-5 py-3 text-sm font-extrabold transition sm:px-8 ${tab==="one"?"bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white shadow-lg shadow-orange-600/30":"text-[#8A9DB0] hover:text-white"}`}>One-Time</button>
-            <button role="tab" aria-selected={tab==="monthly"} onClick={()=>setTab("monthly")} className={`rounded-full px-5 py-3 text-sm font-extrabold transition sm:px-8 ${tab==="monthly"?"bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white shadow-lg shadow-orange-600/30":"text-[#8A9DB0] hover:text-white"}`}>Monthly</button>
-          </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {plans.map(p=>{
-              const popular=!!p.tag;
-              return <article key={p.name} className={`relative flex flex-col rounded-[26px] p-6 transition hover:-translate-y-1 sm:p-7 ${popular?"bg-[#0A2340] text-white shadow-2xl ring-2 ring-[#FF8A2A] shadow-orange-600/20":"glass bg-[#0F2F4D]/50 shadow-sm hover:shadow-lg"}`}>
-                {popular && <span className="absolute -top-3 left-6 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] px-3.5 py-1.5 text-[11px] font-black uppercase tracking-wider text-white shadow-lg">{p.tag}</span>}
-                <div className="flex items-start justify-between gap-3"><h3 className="text-[24px] leading-none">{p.name}</h3><span className={`rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${popular?"bg-white/10 text-white":"bg-[#FF8A2A]/15 text-[#FF8A2A]"}`}>{tab==="one"?"One-Time":"Monthly"}</span></div>
-                <div className="mt-4 flex items-baseline gap-1.5"><span className="text-[40px] font-extrabold leading-none tracking-tight">{p.price}</span>{tab==="monthly" && <span className="text-sm font-bold opacity-70">/month</span>}</div>
-                <div className="mt-4 h-px bg-white/10" />
-                <p className="mt-4 text-sm leading-relaxed text-[#C7D6E3]">{p.desc}</p>
-                <ul className="mt-5 flex-1 space-y-2.5">{p.gets.map(g=><li key={g} className="flex items-start gap-2.5 text-sm font-medium"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white"><Check size={12} strokeWidth={3}/></span><span>{g}</span></li>)}</ul>
-                {p.note && <p className="mt-4 rounded-xl bg-[#FF8A2A]/10 border border-[#FF8A2A]/20 p-3 text-xs font-bold leading-relaxed text-[#FFB98A]">{p.note}</p>}
-                {selectedPlan === `${p.name} — ${tab==="one"?"One-Time":"Monthly"}` && <p className="mt-4 flex items-start gap-1.5 rounded-xl bg-emerald-500/10 border border-emerald-400/20 px-3 py-2.5 text-xs font-extrabold text-emerald-300"><Check size={15} className="mt-0.5 shrink-0"/> Selected — your form below is set to {p.name}.</p>}
-                <button onClick={()=>goToForm(`${p.name} — ${tab==="one"?"One-Time":"Monthly"}`)} aria-pressed={selectedPlan === `${p.name} — ${tab==="one"?"One-Time":"Monthly"}`} className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] py-3.5 text-sm font-extrabold text-white hover:brightness-110">Start with {p.name} <ArrowRight size={17}/></button>
-              </article>;
-            })}
-          </div>
-          <div className="mt-6 rounded-2xl border border-dashed border-[#FF8A2A]/60 bg-[#050E1A] p-5 text-center text-sm font-bold leading-relaxed">Ad spend NOT included. You pay Meta directly. Service fee paid upfront before work starts. Minimum 2 months for monthly plans.</div>
-          <p className="mt-4 text-center text-sm text-[#C7D6E3]">Not sure which one fits? <a href="#contact" className="font-extrabold text-white underline decoration-[#FF8A2A] decoration-2 underline-offset-4">Book a free audit call →</a></p>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="bg-[#050E1A]">
-        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr]"><div><h2 className="mt-3 text-[clamp(2rem,5vw,3.2rem)]">Questions every<br/>smart buyer <span className="text-gradient">asks.</span></h2><p className="mt-4 max-w-md text-sm leading-relaxed text-[#C7D6E3]">If your question is not here, bring it to your free audit call. We would rather give you an honest “not yet” than sell you the wrong plan.</p></div>
-          <div className="space-y-3">{faqs.map((f,i)=><div key={f.q} className="overflow-hidden rounded-2xl border border-white/10 bg-[#071A2E] shadow-sm"><button onClick={()=>setOpenFaq(openFaq===i?-1:i)} aria-expanded={openFaq===i} className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"><span className="font-extrabold leading-snug">{f.q}</span><span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition ${openFaq===i?"bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white":"bg-white/5 text-[#FF8A2A]"}`}><ChevronDown size={18} className={`transition-transform ${openFaq===i?"rotate-180":""}`}/></span></button>{openFaq===i && <p className="border-t border-white/10 px-5 py-4 text-sm leading-relaxed text-[#C7D6E3]">{f.a}</p>}</div>)}</div></div>
         </div>
       </section>
 
