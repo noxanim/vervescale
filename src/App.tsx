@@ -937,6 +937,47 @@ export default function App(){
           <div><h3 className="font-extrabold text-white">Contact</h3><p className="mt-3 text-sm leading-relaxed">Phone / WhatsApp:<br/><a href="https://wa.me/2348135831548" target="_blank" rel="noopener" className="font-bold underline">0813 583 1548</a></p><p className="mt-3 text-sm leading-relaxed">Email:<br/><a href="mailto:miraabel32@gmail.com" className="font-bold underline [overflow-wrap:anywhere]">miraabel32@gmail.com</a></p></div>
           <div><h3 className="font-extrabold text-white">Location</h3><p className="mt-3 text-sm leading-relaxed text-[#C7D6E3]">Owode Wole Oludare Langbasa Close, 21 Oke Ira, Ajah / Lekki, Lagos State, Nigeria<br/><span className="font-bold text-white">Walk-in by appointment.</span></p></div>
         </div>
+        {/* SEO Topical Keywords & Service Coverage Cluster */}
+        <div className="border-t border-white/5 bg-[#02070D]/80 px-4 py-8 sm:px-6">
+          <div className="mx-auto max-w-7xl">
+            <h4 className="text-xs font-extrabold uppercase tracking-[.2em] text-[#FF8A2A]">
+              Focus Keywords &amp; Media Buying Services Across Nigeria
+            </h4>
+            <div className="mt-4 grid gap-6 text-xs text-[#8A9DB0] md:grid-cols-3">
+              <div>
+                <p className="font-bold text-white mb-2">Core Media Buying &amp; Ads Services</p>
+                <ul className="space-y-1.5 leading-relaxed">
+                  <li><a href="#services" className="hover:text-white transition">Meta Ads Agency Nigeria</a></li>
+                  <li><a href="#services" className="hover:text-white transition">Facebook Advertising Agency Lagos</a></li>
+                  <li><a href="#services" className="hover:text-white transition">Instagram Ads Media Buyer Nigeria</a></li>
+                  <li><a href="#how" className="hover:text-white transition">WhatsApp Sales Funnel Setup</a></li>
+                  <li><a href="#pricing" className="hover:text-white transition">Performance Marketing &amp; ROAS Scaling</a></li>
+                  <li><a href="#contact" className="hover:text-white transition">Meta Pixel &amp; Business Manager Setup</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-white mb-2">Target Industries We Scale</p>
+                <ul className="space-y-1.5 leading-relaxed">
+                  <li><a href="#results" className="hover:text-white transition">E-commerce Facebook Ads Nigeria</a></li>
+                  <li><a href="#results" className="hover:text-white transition">Real Estate Lead Generation Ads Lagos</a></li>
+                  <li><a href="#results" className="hover:text-white transition">Fashion &amp; Clothing Instagram Ads</a></li>
+                  <li><a href="#results" className="hover:text-white transition">Beauty &amp; Skincare Conversion Funnels</a></li>
+                  <li><a href="#results" className="hover:text-white transition">Online Courses &amp; High-Ticket Ads Nigeria</a></li>
+                  <li><a href="#results" className="hover:text-white transition">Local Service Business Lead Generation</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-white mb-2">Key Locations Served in Nigeria</p>
+                <p className="leading-relaxed">
+                  Headquartered in Ajah / Lekki, Lagos State. Delivering remote and on-ground media buying for businesses in:
+                </p>
+                <p className="mt-2 leading-relaxed text-[#C7D6E3]">
+                  Lagos (Lekki, Ikeja, Victoria Island, Yaba, Surulere), Abuja (Wuse 2, Gwarinpa, Maitama), Port Harcourt (GRA, Trans Amadi), Ibadan, Enugu, Asaba, Benin City, Kano, and nationwide Nigeria.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="border-t border-white/10"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 px-4 py-5 text-xs text-[#8A9DB0] sm:flex-row sm:px-6"><span>© 2026 VerveScale Digital. All rights reserved.</span></div></div>
       </footer>
 
