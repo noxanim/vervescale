@@ -39,8 +39,13 @@ button{font-family:inherit}
 .eyebrow{font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:#FF8A2A}
 .card-shadow{box-shadow:0 24px 60px rgba(0,0,0,.45)}
 .soft-shadow{box-shadow:0 14px 36px rgba(0,0,0,.35)}
-input,select,textarea{font-family:inherit;color:#0B1A27;background:#fff}
+input,select,textarea{font-family:inherit;color:#0B1A27;background:#fff;font-size:16px}
 input:focus,select:focus,textarea:focus{outline:2px solid #FF8A2A;outline-offset:1px;border-color:#FF8A2A}
+@media (max-width: 767px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .floaty{animation:floaty 5s ease-in-out infinite}
 @keyframes floaty2{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}

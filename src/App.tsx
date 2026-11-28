@@ -324,16 +324,14 @@ const LOCATIONS = [
 ];
 
 const PLANS = [
-  "Launch Plan (₦75k)",
-  "Essential Monthly (₦110k/mo)",
-  "Build Plan (₦150k)",
-  "Growth Monthly (₦165k/mo)",
-  "Audit Plan (₦45k)",
-  "Full Funnel (₦250k)",
-  "Setup Only (₦20k)",
-  "Scale Monthly (₦290k/mo)",
-  "Launch Plan (₦75k)",
-  "Essential Monthly (₦110k/mo)"
+  "Launch Plan",
+  "Essential Monthly",
+  "Build Plan",
+  "Growth Monthly",
+  "Audit Plan",
+  "Full Funnel",
+  "Setup Only",
+  "Scale Monthly"
 ];
 
 const RECENT_TIMES = [
@@ -514,7 +512,7 @@ function FloatingSocialProof() {
             <span className="truncate text-[11px] text-[#8A9DB0]">({current.location})</span>
           </div>
           <p className="mt-0.5 truncate text-[11px] text-[#C7D6E3]">
-            Just purchased <strong className="font-extrabold text-[#FF8A2A]">{current.plan}</strong>
+            Just purchased <strong className="font-extrabold text-[#FF8A2A]">{current.plan.replace(/\s*\([^)]*\)/, "")}</strong>
           </p>
           <div className="mt-1 flex items-center gap-2 text-[10px] text-[#8A9DB0]">
             <span className="inline-flex items-center gap-1 font-semibold text-emerald-400">
@@ -903,31 +901,30 @@ export default function App(){
           <div className="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-start">
             <div>
               <h2 className="mt-4 text-[clamp(2.5rem,6.5vw,4.4rem)] leading-[1.02]">Stop boosting.<br/><span className="text-gradient">Start selling.</span></h2>
-              <p className="mt-5 max-w-lg leading-relaxed text-[#C7D6E3]">Tell us about your offer. We will reply within 24 hours on WhatsApp with the honest next step — whether that is Audit, Launch, or a monthly plan.</p>
+              <p className="mt-5 max-w-lg leading-relaxed text-[#C7D6E3]">Tell us about your offer. We will reply on WhatsApp with the honest next step — whether that is Audit, Launch, or a monthly plan.</p>
               <div className="mt-7 space-y-4">
                 {[["Your offer gets a real funnel","No guesswork, no ghosting"],["Launch in 3–5 days","Once we have your assets and access"],["You stay in control of ad spend","You pay Meta directly"]].map(([a,b])=><div key={a} className="flex items-center gap-3"><span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] text-white"><Check size={17} strokeWidth={3}/></span><div><p className="font-extrabold leading-tight">{a}</p><p className="text-sm text-[#8A9DB0]">{b}</p></div></div>)}
               </div>
 
             </div>
             <form id="leadForm" onSubmit={handleSubmit} className="rounded-[28px] bg-white p-5 text-[#0B1A27] card-shadow sm:p-7">
-              <div className="flex items-start justify-between gap-3"><h3 className="text-[25px] leading-none sm:text-[28px]">Claim My Launch Spot</h3><span className="shrink-0 rounded-full bg-[#050E1A] px-3 py-1.5 text-[11px] font-extrabold tracking-wider text-white">24HR REPLY</span></div>
+              <div className="flex items-start justify-between gap-3"><h3 className="text-[25px] leading-none sm:text-[28px]">Claim My Launch Spot</h3></div>
               <p className="mt-2.5 text-sm text-slate-600">Plan selected: <strong className="text-[#0B1A27]">{selectedPlan}</strong></p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Your name *</span><input required id="name" name="name" value={form.name} onChange={e=>update("name",e.target.value)} placeholder="Full name" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm"/></label>
-                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">WhatsApp number *</span><input required id="whatsapp" name="whatsapp" value={form.whatsapp} onChange={e=>update("whatsapp",e.target.value)} placeholder="e.g. 0803 555 0147" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm"/></label>
-                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Email *</span><input required id="email" name="email" type="email" value={form.email} onChange={e=>update("email",e.target.value)} placeholder="you@example.com" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm"/></label>
-                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">{isSetupOnly ? "What are you selling? *" : "Business type *"}</span><input required id="business" name="business" value={form.business} onChange={e=>update("business",e.target.value)} placeholder="Fashion, skincare, real estate…" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm"/></label>
+                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Your name *</span><input required id="name" name="name" value={form.name} onChange={e=>update("name",e.target.value)} placeholder="Full name" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-base sm:text-sm"/></label>
+                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">WhatsApp number *</span><input required id="whatsapp" name="whatsapp" value={form.whatsapp} onChange={e=>update("whatsapp",e.target.value)} placeholder="e.g. 0803 555 0147" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-base sm:text-sm"/></label>
+                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Email *</span><input required id="email" name="email" type="email" value={form.email} onChange={e=>update("email",e.target.value)} placeholder="you@example.com" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-base sm:text-sm"/></label>
+                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">{isSetupOnly ? "What are you selling? *" : "Business type *"}</span><input required id="business" name="business" value={form.business} onChange={e=>update("business",e.target.value)} placeholder="Fashion, skincare, real estate…" className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-base sm:text-sm"/></label>
                 <div className="block" style={{ display: isSetupOnly ? "none" : "block" }} aria-hidden={isSetupOnly}>
-                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Monthly ad budget range</span><select id="budget" name="budget" value={form.budget} onChange={e=>update("budget",e.target.value)} disabled={isSetupOnly} required={!isSetupOnly} className={`w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm ${isSetupOnly ? "bg-slate-100 text-slate-400 opacity-60" : "bg-white"}`}><option value="" disabled>Select monthly budget</option><option>None — Setup Only, no ad budget needed</option><option>Under ₦50,000 / month</option><option>₦50,000 – ₦150,000 / month</option><option>₦150,000 – ₦300,000 / month</option><option>₦300,000+ / month</option><option>Not sure yet</option></select></label>
+                <label className="block"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Monthly ad budget range</span><select id="budget" name="budget" value={form.budget} onChange={e=>update("budget",e.target.value)} disabled={isSetupOnly} required={!isSetupOnly} className={`w-full rounded-xl border border-slate-200 px-3.5 py-3 text-base sm:text-sm ${isSetupOnly ? "bg-slate-100 text-slate-400 opacity-60" : "bg-white"}`}><option value="" disabled>Select monthly budget</option><option>None — Setup Only, no ad budget needed</option><option>Under ₦50,000 / month</option><option>₦50,000 – ₦150,000 / month</option><option>₦150,000 – ₦300,000 / month</option><option>₦300,000+ / month</option><option>Not sure yet</option></select></label>
                 </div>
-                <label className="block sm:col-span-2"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Your goal</span><select id="goal" name="goal" value={form.goal} onChange={e=>update("goal",e.target.value)} className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm"><option value="" disabled>Select your goal</option><option>Get Leads</option><option>Get Sales</option><option>Get Calls</option><option>Get Bookings</option><option>Get Appointments</option><option>Not sure yet</option></select></label>
-                <label className="block sm:col-span-2"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Plan interested in</span><select id="plan" name="plan" value={selectedPlan} onChange={e=>setSelectedPlan(e.target.value)} className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm">{allPlans.map(p=><option key={p.value} value={p.value}>{p.label}</option>)}</select>{isSetupOnly && <p role="note" className="mt-2 rounded-xl bg-orange-50 p-3 text-xs font-bold leading-relaxed text-orange-800">Setup Only — no monthly budget needed. We&apos;ll set up your account, pixel &amp; foundation correctly.</p>}</label>
-                <label className="block sm:col-span-2"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Your offer / Message (optional)</span><textarea id="message" name="message" value={form.message} onChange={e=>update("message",e.target.value)} rows={4} placeholder="What are you selling? What has not worked so far?" className="w-full resize-y rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm"/></label>
+                <label className="block sm:col-span-2"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Your goal</span><select id="goal" name="goal" value={form.goal} onChange={e=>update("goal",e.target.value)} className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-base sm:text-sm"><option value="" disabled>Select your goal</option><option>Get Leads</option><option>Get Sales</option><option>Get Calls</option><option>Get Bookings</option><option>Get Appointments</option><option>Not sure yet</option></select></label>
+                <label className="block sm:col-span-2"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Plan interested in</span><select id="plan" name="plan" value={selectedPlan} onChange={e=>setSelectedPlan(e.target.value)} className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-base sm:text-sm">{allPlans.map(p=><option key={p.value} value={p.value}>{p.label}</option>)}</select>{isSetupOnly && <p role="note" className="mt-2 rounded-xl bg-orange-50 p-3 text-xs font-bold leading-relaxed text-orange-800">Setup Only — no monthly budget needed. We&apos;ll set up your account, pixel &amp; foundation correctly.</p>}</label>
+                <label className="block sm:col-span-2"><span className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[.12em]">Your offer / Message (optional)</span><textarea id="message" name="message" value={form.message} onChange={e=>update("message",e.target.value)} rows={4} placeholder="What are you selling? What has not worked so far?" className="w-full resize-y rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-base sm:text-sm"/></label>
               </div>
               {selectedPlanDetails && <p aria-live="polite" className="mt-4 text-center text-xs font-bold leading-relaxed text-slate-600">{planSummaryText}</p>}
               <button type="submit" className={`mt-5 flex w-full items-center justify-center gap-2 rounded-full py-4 text-sm font-extrabold text-white hover:brightness-110 ${isSending ? "bg-green-600" : "bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00]"}`}>{isSending ? "Processing..." : ctaText} <ArrowRight size={18}/></button>
               <p className="mt-3 text-center text-xs font-semibold text-slate-500">Secure Flutterwave checkout for {selectedPlanName} — {selectedPlanDetails?.ctaPrice ?? "₦75,000"}.</p>
-              <p className="mt-2 text-center text-xs font-semibold text-slate-500">We reply within 24 hours on WhatsApp.</p>
             </form>
           </div>
         </div>
