@@ -1,0 +1,57 @@
+# robots.txt for VerveScale Digital (https://www.vervescaledigital.com.ng)
+# Allows all major search engines and modern AI crawlers
+
+User-agent: *
+Allow: /
+
+# Google Search & Google AI
+User-agent: Googlebot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI / ChatGPT / SearchGPT
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Microsoft Bing & Copilot
+User-agent: Bingbot
+Allow: /
+
+# Apple AI & Siri
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
+# Common Crawl (used by multiple AI training & search datasets)
+User-agent: CCBot
+Allow: /
+
+# ByteDance
+User-agent: Bytespider
+Allow: /
+
+# Amazon AI
+User-agent: Amazonbot
+Allow: /
+
+Sitemap: https://www.vervescaledigital.com.ng/sitemap.xml
