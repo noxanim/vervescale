@@ -30,7 +30,7 @@ export default function ArticleWhatsAppFunnel() {
       "datePublished": "2026-11-28",
       "dateModified": "2026-11-28",
       "mainEntityOfPage": "https://www.vervescaledigital.com.ng/blog/whatsapp-sales-funnel-guide",
-      "keywords": "WhatsApp sales funnel Nigeria, real estate lead generation ads Lagos, WhatsApp conversion ads Meta, high ticket sales Nigeria, Click to WhatsApp ads"
+      "keywords": "WhatsApp sales funnel Nigeria, real estate lead generation ads Nigeria, WhatsApp conversion ads Meta, high ticket sales Nigeria, Click to WhatsApp ads"
     }
   });
 
@@ -57,7 +57,7 @@ export default function ArticleWhatsAppFunnel() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#C7D6E3]">
-            Whether you are selling ₦85M duplexes in Lekki, private medical procedures, corporate training, or premium consultancy, your prospective Nigerian client does not want to fill out a 12-page web form. They want a conversation. Here is how to engineer a high-converting Click-to-WhatsApp funnel without drowning in unqualified chats.
+            Whether you are selling high-value properties, private medical procedures, corporate training, or premium consultancy, your prospective Nigerian client does not want to fill out a 12-page web form. They want a conversation. Here is how to engineer a high-converting Click-to-WhatsApp funnel without drowning in unqualified chats.
           </p>
         </header>
 
@@ -102,7 +102,7 @@ export default function ArticleWhatsAppFunnel() {
               <MessageSquare className="h-8 w-8 text-[#FF8A2A] mb-3" />
               <h3 className="font-bold text-white text-lg">2. Pre-Populated Chat Prompts</h3>
               <p className="mt-2 text-sm text-[#C7D6E3]">
-                Never let prospects arrive with a blank chat. Use pre-filled WhatsApp link parameters like: <em>"Hi VerveScale, I saw your Lekki Phase 1 project. My budget is ₦90M and I want to schedule a site inspection."</em>
+                Never let prospects arrive with a blank chat. Use pre-filled WhatsApp link parameters like: <em>&ldquo;Hi VerveScale, I saw your property project. My budget is ₦90M and I want to schedule a site inspection.&rdquo;</em>
               </p>
             </div>
 
@@ -116,10 +116,10 @@ export default function ArticleWhatsAppFunnel() {
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            Case Study: How a Lekki Real Estate Broker Closed 2 Duplexes in 6 Weeks
+            Case Study: How a Nigerian Real Estate Broker Closed 2 Duplexes in 6 Weeks
           </h2>
           <p>
-            Before working with VerveScale Digital, real estate consultant Tunde Adeyemi ran boosted Instagram videos of new developments in Lekki. He received over 200 WhatsApp messages in a month, but 95% of them ghosted when he sent the price brochure.
+            Before working with VerveScale Digital, real estate consultant Tunde Adeyemi ran boosted Instagram videos of new developments in Nigeria. He received over 200 WhatsApp messages in a month, but 95% of them ghosted when he sent the price brochure.
           </p>
           <p>
             <strong>The Solution:</strong> We created an instant qualifying Meta lead form asking three targeted questions (Budget Range, Preferred Location, Timeline to Purchase) before seamlessly bridging approved prospects to an automated WhatsApp booking line.
@@ -162,12 +162,10 @@ export default function ArticleWhatsAppFunnel() {
                 Claim Full Funnel Spot <ArrowRight size={16} />
               </a>
               <a
-                href="https://wa.me/2348135831548"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/#pricing"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3.5 text-sm font-bold text-white hover:bg-white/10"
               >
-                Book a WhatsApp Strategy Call
+                Compare Funnel Plans
               </a>
             </div>
           </div>

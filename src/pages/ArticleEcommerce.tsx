@@ -30,7 +30,7 @@ export default function ArticleEcommerce() {
       "datePublished": "2026-11-28",
       "dateModified": "2026-11-28",
       "mainEntityOfPage": "https://www.vervescaledigital.com.ng/blog/ecommerce-sales-growth-nigeria",
-      "keywords": "ecommerce Facebook ads Nigeria, scaling online store Lagos, pay on delivery ads Nigeria, fashion brand advertising Instagram, Shopify store ads Nigeria, ROAS media buying"
+      "keywords": "ecommerce Facebook ads Nigeria, scaling online store Nigeria, pay on delivery ads Nigeria, fashion brand advertising Instagram, Shopify store ads Nigeria, ROAS media buying"
     }
   });
 
@@ -57,7 +57,7 @@ export default function ArticleEcommerce() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#C7D6E3]">
-            Running an e-commerce brand in Nigeria (fashion, cosmetics, electronics, home goods) is thrilling until your dispatch rider calls from Ikeja saying the customer isn't picking up. Here is the operational and media buying blueprint to fix cash flow, lower customer acquisition costs, and scale profitably.
+            Running an e-commerce brand in Nigeria (fashion, cosmetics, electronics, home goods) is thrilling until your dispatch rider calls saying the customer isn't picking up. Here is the operational and media buying blueprint to fix cash flow, lower customer acquisition costs, and scale profitably.
           </p>
         </header>
 
@@ -74,7 +74,7 @@ export default function ArticleEcommerce() {
           </p>
           <ul className="list-disc pl-5 space-y-2 text-[#C7D6E3]">
             <li><strong>Severe Trust Deficit:</strong> Due to widespread online scams, customers hesitate to enter their debit cards on unfamiliar websites.</li>
-            <li><strong>Pay-on-Delivery (POD) Rejection Rates:</strong> 25% to 45% of POD orders in Lagos and interstate get rejected when the dispatch rider arrives because the buyer "changed their mind" or "travelled".</li>
+            <li><strong>Pay-on-Delivery (POD) Rejection Rates:</strong> 25% to 45% of POD orders across Nigeria get rejected when the dispatch rider arrives because the buyer "changed their mind" or "travelled".</li>
             <li><strong>Card Limit &amp; Bank Gateway Failures:</strong> Network downtime on local bank switches causes cart drop-offs right at the final payment step.</li>
           </ul>
 
@@ -104,7 +104,7 @@ export default function ArticleEcommerce() {
               <ul className="mt-2 list-disc pl-5 space-y-1 text-xs sm:text-sm text-[#8A9DB0]">
                 <li>Opening the box and feeling the fabric or inspecting the finish</li>
                 <li>Addressing the top fear ("Yes, this is original leather and won't peel")</li>
-                <li>Showing your packing team in Lagos actively preparing customer parcels</li>
+                <li>Showing your packing team actively preparing customer parcels</li>
               </ul>
             </div>
 
@@ -153,12 +153,10 @@ export default function ArticleEcommerce() {
                 Get Started with Build Plan <ArrowRight size={16} />
               </a>
               <a
-                href="https://wa.me/2348135831548"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-5 py-3.5 text-sm font-bold text-emerald-300 hover:bg-emerald-400/20"
+                href="/#pricing"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3.5 text-sm font-bold text-white hover:bg-white/10"
               >
-                Discuss Your E-commerce Catalog
+                Compare Pricing Plans
               </a>
             </div>
           </div>

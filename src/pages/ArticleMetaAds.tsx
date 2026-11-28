@@ -30,7 +30,7 @@ export default function ArticleMetaAds() {
       "datePublished": "2026-11-28",
       "dateModified": "2026-11-28",
       "mainEntityOfPage": "https://www.vervescaledigital.com.ng/blog/meta-ads-guide-nigeria",
-      "keywords": "Meta ads agency Nigeria, Facebook ads Nigeria, Instagram ads Lagos, boost post vs ads manager Nigeria, stop boosting posts, media buying Lagos"
+      "keywords": "Meta ads agency Nigeria, Facebook ads Nigeria, Instagram ads Nigeria, boost post vs ads manager Nigeria, stop boosting posts, media buying Nigeria"
     }
   });
 
@@ -57,7 +57,7 @@ export default function ArticleMetaAds() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#C7D6E3]">
-            Every week in Lagos, Abuja, and Port Harcourt, business owners put ₦20,000 to ₦100,000 into Instagram's blue "Boost Post" button. Two days later, they have 1,400 likes, 12 "how much?" comments, zero orders, and an empty bank account. Here is why it happens—and the exact funnel architecture you must switch to.
+            Every week across Nigeria, business owners put ₦20,000 to ₦100,000 into Instagram's blue "Boost Post" button. Two days later, they have 1,400 likes, 12 "how much?" comments, zero orders, and an empty bank account. Here is why it happens—and the exact funnel architecture you must switch to.
           </p>
         </header>
 
@@ -142,7 +142,7 @@ export default function ArticleMetaAds() {
               <div>
                 <h3 className="font-bold text-white">2. Direct-Response Video Hooks (Creative Velocity)</h3>
                 <p className="mt-1 text-sm text-[#C7D6E3]">
-                  A static picture of your product against a white wall no longer cuts it. In 2026, targeting is largely done through the creative. Your first 3 seconds must call out the exact problem your customer in Lekki, Wuse, or Port Harcourt faces before presenting your offer.
+                  A static picture of your product against a white wall no longer cuts it. In 2026, targeting is largely done through the creative. Your first 3 seconds must call out the exact problem your Nigerian customer faces before presenting your offer.
                 </p>
               </div>
             </div>

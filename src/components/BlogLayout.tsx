@@ -44,14 +44,6 @@ export default function BlogLayout({ children, breadcrumbs }: BlogLayoutProps) {
 
           <div className="flex items-center gap-2">
             <a
-              href="https://wa.me/2348135831548"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3.5 py-2 text-xs font-bold text-emerald-300 transition hover:bg-emerald-400/20 sm:inline-flex"
-            >
-              <MessageCircle size={14} /> WhatsApp
-            </a>
-            <a
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] px-4 py-2.5 text-xs font-extrabold text-white shadow-lg shadow-orange-600/30 transition hover:brightness-110 sm:text-sm sm:px-5 sm:py-3"
             >
@@ -107,12 +99,10 @@ export default function BlogLayout({ children, breadcrumbs }: BlogLayoutProps) {
               Claim Your Launch Spot <ArrowRight size={16} />
             </a>
             <a
-              href="https://wa.me/2348135831548"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/#pricing"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-4 text-sm font-extrabold text-white transition hover:bg-white/10"
             >
-              <MessageCircle size={16} /> Chat on WhatsApp
+              See Pricing Plans
             </a>
           </div>
           <p className="mt-5 text-xs text-[#8A9DB0]">
@@ -133,7 +123,7 @@ export default function BlogLayout({ children, breadcrumbs }: BlogLayoutProps) {
                 </span>
               </Link>
               <p className="mt-3 max-w-md text-xs leading-relaxed text-[#C7D6E3]">
-                Performance Meta ads &amp; media buying agency in Lagos, Nigeria. We build profitable Facebook &amp; Instagram funnels that convert cold traffic into revenue.
+                Performance Meta ads &amp; media buying agency in Nigeria. We build profitable Facebook &amp; Instagram funnels that convert cold traffic into revenue.
               </p>
             </div>
             <div>
@@ -147,14 +137,11 @@ export default function BlogLayout({ children, breadcrumbs }: BlogLayoutProps) {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-white text-xs uppercase tracking-wider">Contact &amp; Location</h3>
+              <h3 className="font-bold text-white text-xs uppercase tracking-wider">Contact &amp; Coverage</h3>
               <p className="mt-3 text-xs leading-relaxed">
-                Owode Wole Oludare Langbasa Close, 21 Oke Ira, Ajah / Lekki, Lagos State, Nigeria.
+                Operating nationwide across Nigeria. Delivering high-ROI performance media buying.
               </p>
               <p className="mt-2 text-xs">
-                WhatsApp: <a href="https://wa.me/2348135831548" className="text-white underline">0813 583 1548</a>
-              </p>
-              <p className="mt-1 text-xs">
                 Email: <a href="mailto:miraabel32@gmail.com" className="text-white underline">miraabel32@gmail.com</a>
               </p>
             </div>
