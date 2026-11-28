@@ -674,9 +674,10 @@ export default function App(){
             <span className="leading-none block shrink-0"><span className="block whitespace-nowrap text-[15px] font-extrabold tracking-tight sm:text-[20px]">VerveScale <span className="text-[#FF8A2A]">Digital</span></span><span className="mt-1 block text-[8px] font-bold uppercase tracking-[.22em] text-[#8A9DB0] sm:text-[9px]">Premium Media Buying</span></span>
           </a>
           <nav className="hidden items-center gap-7 text-[13px] font-semibold text-[#C7D6E3] lg:flex">
-            <a href="#how" className="hover:text-white">How It Works</a><a href="#services" className="hover:text-white">Services</a><a href="#results" className="hover:text-white">Results</a><a href="#pricing" className="hover:text-white">Pricing</a><a href="#faq" className="hover:text-white">FAQ</a><a href="#reviews" className="hover:text-white">Reviews</a>
+            <a href="#how" className="hover:text-white">How It Works</a><a href="#services" className="hover:text-white">Services</a><a href="#results" className="hover:text-white">Results</a><a href="#pricing" className="hover:text-white">Pricing</a><a href="#faq" className="hover:text-white">FAQ</a><a href="#reviews" className="hover:text-white">Reviews</a><a href="/blog" className="text-[#FF8A2A] hover:text-white transition">Blog</a>
           </nav>
           <div className="flex items-center gap-2">
+            <a href="/blog" className="hidden items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#C7D6E3] hover:text-white md:inline-flex">Guides</a>
             <span className="hidden items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#FF8A2A] xl:inline-flex"><Flame size={12}/> 4 Launch Spots / Month</span>
             <button type="button" onClick={()=>goToForm("Audit — One-Time")} className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-[#FF8A2A] to-[#FF5E00] px-4 py-3 text-[13px] font-extrabold text-white shadow-lg shadow-orange-600/30 hover:brightness-110 sm:inline-flex">Get My Audit <ArrowRight size={15}/></button>
             <a href="#pricing" className="shrink-0 rounded-full border border-white/15 px-3.5 py-2.5 text-xs font-extrabold text-white lg:hidden">Pricing</a>
@@ -940,12 +941,17 @@ export default function App(){
         {/* SEO Topical Keywords & Service Coverage Cluster */}
         <div className="border-t border-white/5 bg-[#02070D]/80 px-4 py-8 sm:px-6">
           <div className="mx-auto max-w-7xl">
-            <h4 className="text-xs font-extrabold uppercase tracking-[.2em] text-[#FF8A2A]">
-              Focus Keywords &amp; Media Buying Services Across Nigeria
-            </h4>
-            <div className="mt-4 grid gap-6 text-xs text-[#8A9DB0] md:grid-cols-3">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <h4 className="text-xs font-extrabold uppercase tracking-[.2em] text-[#FF8A2A]">
+                Focus Keywords &amp; Media Buying Services Across Nigeria
+              </h4>
+              <a href="/blog" className="text-xs font-bold text-white hover:text-[#FF8A2A] underline transition">
+                View All Strategy Guides &amp; Blog →
+              </a>
+            </div>
+            <div className="mt-4 grid gap-6 text-xs text-[#8A9DB0] md:grid-cols-4">
               <div>
-                <p className="font-bold text-white mb-2">Core Media Buying &amp; Ads Services</p>
+                <p className="font-bold text-white mb-2">Core Media Buying &amp; Ads</p>
                 <ul className="space-y-1.5 leading-relaxed">
                   <li><a href="#services" className="hover:text-white transition">Meta Ads Agency Nigeria</a></li>
                   <li><a href="#services" className="hover:text-white transition">Facebook Advertising Agency Lagos</a></li>
@@ -962,8 +968,17 @@ export default function App(){
                   <li><a href="#results" className="hover:text-white transition">Real Estate Lead Generation Ads Lagos</a></li>
                   <li><a href="#results" className="hover:text-white transition">Fashion &amp; Clothing Instagram Ads</a></li>
                   <li><a href="#results" className="hover:text-white transition">Beauty &amp; Skincare Conversion Funnels</a></li>
-                  <li><a href="#results" className="hover:text-white transition">Online Courses &amp; High-Ticket Ads Nigeria</a></li>
+                  <li><a href="#results" className="hover:text-white transition">Online Courses &amp; High-Ticket Ads</a></li>
                   <li><a href="#results" className="hover:text-white transition">Local Service Business Lead Generation</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-white mb-2">Featured Articles &amp; Insights</p>
+                <ul className="space-y-1.5 leading-relaxed">
+                  <li><a href="/blog/meta-ads-guide-nigeria" className="hover:text-white transition">Why Boosting Posts Fails (Complete Guide)</a></li>
+                  <li><a href="/blog/ecommerce-sales-growth-nigeria" className="hover:text-white transition">How to Scale E-Commerce Sales in Nigeria</a></li>
+                  <li><a href="/blog/whatsapp-sales-funnel-guide" className="hover:text-white transition">The High-Ticket WhatsApp Funnel Blueprint</a></li>
+                  <li><a href="/blog" className="text-[#FF8A2A] font-bold hover:underline">Browse All 3 Performance Guides →</a></li>
                 </ul>
               </div>
               <div>
@@ -972,7 +987,7 @@ export default function App(){
                   Headquartered in Ajah / Lekki, Lagos State. Delivering remote and on-ground media buying for businesses in:
                 </p>
                 <p className="mt-2 leading-relaxed text-[#C7D6E3]">
-                  Lagos (Lekki, Ikeja, Victoria Island, Yaba, Surulere), Abuja (Wuse 2, Gwarinpa, Maitama), Port Harcourt (GRA, Trans Amadi), Ibadan, Enugu, Asaba, Benin City, Kano, and nationwide Nigeria.
+                  Lagos (Lekki, Ikeja, Victoria Island, Yaba), Abuja (Wuse 2, Maitama), Port Harcourt (GRA), Ibadan, Enugu, Asaba, Kano &amp; nationwide.
                 </p>
               </div>
             </div>
